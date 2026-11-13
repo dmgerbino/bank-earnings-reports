@@ -1,0 +1,614 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>OptimumBank Q3 2026</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap">
+<style>
+/* Layout: single reading column, data panels on a quiet ruled ground; one blue accent for OPHC */
+:root{--bg:#F7F8FA;--surface:#FFFFFF;--fg:#14181F;--muted:#5A6270;--rule:#DDE1E7;--accent:#2F6FB0;--peer:#9AA1AC;--good:#1E8A57;--bad:#C2412D;--warn:#A86B00;
+--serif:"Source Serif 4",Georgia,serif;--sans:"IBM Plex Sans",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000000;--surface:#0D0D0D;--fg:#F0EDEA;--muted:#A19D97;--rule:#262626;--accent:#5B9BD5;--peer:#6E6B67;--good:#3DD68C;--bad:#FF6B52;--warn:#F5A623;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#000000;--surface:#0D0D0D;--fg:#F0EDEA;--muted:#A19D97;--rule:#262626;--accent:#5B9BD5;--peer:#6E6B67;--good:#3DD68C;--bad:#FF6B52;--warn:#F5A623;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:1rem/1.6 var(--serif)}
+.wrap{max-width:46rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:2rem 4rem}
+.eyebrow{font:600 .875rem var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+h1{font:700 1.953rem/1.2 var(--serif);text-wrap:balance;margin:.5rem 0 1rem}
+h2{font:600 1.25rem/1.3 var(--sans);margin:2.75rem 0 .5rem;padding-top:1rem;border-top:1px solid var(--rule);text-wrap:balance}
+h3{font:600 1rem var(--sans);margin:1.25rem 0 .25rem}
+p,li{max-width:65ch}
+.lede{font-size:1.125rem}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:.75rem;margin-top:1.5rem}
+.kpi{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:.875rem 1rem;font-family:var(--sans);font-variant-numeric:tabular-nums;min-width:0}
+.kpi .l{font-size:.875rem;color:var(--muted)}.kpi .v{font-size:1.75rem;font-weight:700;line-height:1.2}
+.kpi .c{font-size:.875rem;font-weight:600}.up{color:var(--good)}.dn{color:var(--bad)}.wn{color:var(--warn)}
+.chart{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:.75rem;margin:.75rem 0;min-width:0}
+.chart .t{font:600 .9375rem/1.35 var(--sans);margin:0 0 .25rem}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart text{font-family:var(--sans);fill:var(--fg)}
+.chart .mut{fill:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.75rem}
+.tbl{overflow-x:auto;margin:.75rem 0}
+table{border-collapse:collapse;font:0.875rem var(--sans);font-variant-numeric:tabular-nums;width:100%;min-width:34rem}
+th,td{padding:.45rem .5rem;border-bottom:1px solid var(--rule);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--muted);font-weight:600}
+tr.me td{font-weight:600;color:var(--accent)}
+.small{font:0.875rem/1.5 var(--sans);color:var(--muted)}
+a{color:var(--accent)}
+#tip{position:fixed;pointer-events:none;background:var(--surface);color:var(--fg);border:1px solid var(--rule);border-radius:6px;padding:.3rem .5rem;font:.875rem var(--sans);font-variant-numeric:tabular-nums}
+button#theme{font:600 .875rem var(--sans);background:none;border:1px solid var(--rule);color:var(--fg);border-radius:6px;padding:.2rem .6rem;cursor:pointer}
+button#theme:focus-visible{outline:2px solid var(--accent)}
+</style>
+<div class="wrap">
+<div class="eyebrow"><span>OptimumBank Holdings · NYSE American: OPHC · Q3 2026</span><button id="theme" type="button">Theme</button></div>
+<h1 id="thesis"></h1>
+<p class="lede" id="lede"></p>
+<p class="small">Quarter ended Sep 30, 2026 (calendar Q3). Released Nov 12, 2026, 4:10 p.m. ET. All figures GAAP; OptimumBank reports no adjusted EPS.</p>
+<div class="kpis" id="kpis"></div>
+
+<h2>Against expectations</h2>
+<p>Both lines beat the Zacks consensus by about 11%. Without the roughly $0.9 million late fee collected on a nonaccrual loan payoff, revenue still beat by 6%. The company gives no quarterly guidance, so there is no guidance range to measure against.</p>
+<div class="chart"><p class="t">EPS and revenue both cleared the Zacks estimate by 11%</p><div id="c-bullet"></div></div>
+
+<h2>What moved</h2>
+<p>Revenue and net interest income rose in each of the last five quarters. Margin widened as loan yields (7.40%) rose faster than funding costs (3.49% on interest-bearing liabilities).</p>
+<div class="grid" id="c-trends"></div>
+
+<h2>Against peers</h2>
+<p>OPHC ranks first of four on revenue growth, net interest margin, efficiency and return on assets. It is second on net charge-offs and Tier 1 leverage. All peers reported the same calendar quarter (Jul 1 to Sep 30, 2026).</p>
+<div class="grid" id="c-peers"></div>
+<div class="tbl"><table id="t-peers"></table></div>
+<ul class="small" id="why"></ul>
+
+<h2>Guidance</h2>
+<p>OptimumBank did not give numeric guidance. The CEO said management has found further ways to "improve operating efficiency and limit expenses," with benefits expected over the next several quarters. No next-quarter consensus was found to compare against.</p>
+
+<h2>Profitability</h2>
+<p>Net income rose $2.85 million from a year ago. Higher net interest income added $5.73 million, more than double the $2.39 million rise in operating expense.</p>
+<div class="chart"><p class="t">Net interest income drove the whole $2.85M year-over-year gain</p><div id="c-bridge"></div></div>
+<h3>GAAP and adjusted</h3>
+<p>There is no adjusted figure to reconcile. One item to keep in mind: about $0.9 million of Q3 noninterest income came from late fees on a nonaccrual loan payoff. Excluding it, noninterest income was about $1.94 million, 2.3% below a year ago, and net income would be roughly $0.7 million lower after tax at the quarter's 24.9% effective rate (an estimate).</p>
+
+<h2>Risks and open questions</h2>
+<ul id="risks"></ul>
+<h2>What to watch next quarter</h2>
+<ul>
+<li><strong>Reserve to loans</strong> (0.89%): does it hold or keep thinning as loans grow?</li>
+<li><strong>Cost of interest-bearing liabilities</strong> (3.49%, up 19 bp QoQ): a further rise would squeeze the 4.63% margin.</li>
+<li><strong>Noninterest expense</strong> ($9.0M): the test of the promised efficiency program.</li>
+<li><strong>Noninterest income</strong> without one-time fees (about $1.94M this quarter).</li>
+<li><strong>Diluted share count</strong> after ATM and private share sales.</li>
+<li>Peers USCB, CCBG and BAFN report Q4 2026 in late January 2027.</li>
+</ul>
+<h2>What the data doesn't show</h2>
+<ul>
+<li>Only one consensus provider (Zacks) was found; its preview printed revenue as "$17.65 billion," which its own +35.5% growth figure shows is $17.65 million. An Investing.com story headlined an "earnings miss" could not be read, so its estimate is not shown.</li>
+<li>CET1 and total risk-based capital ratios, deposit cost and weighted share counts were not in the release text read; the 10-Q was not yet checked.</li>
+<li>EPS history uses the company's restated diluted figures after the April 2026 exchange of preferred stock for 11.46 million nonvoting common shares; basic and diluted EPS were not comparable before Q3.</li>
+<li>Income statement credit loss expense ($1,066K) and the allowance rollforward ($1,111K) differ; the release does not explain the gap.</li>
+<li>Peer beat or miss against their own consensus was not gathered.</li>
+</ul>
+<h2>Method and sources</h2>
+<p class="small">OPHC figures: <a href="https://www.globenewswire.com/news-release/2026/11/12/3402232/0/en/optimumbank-holdings-inc-financial-performance-for-the-third-quarter-of-2026.html" target="_blank" rel="noopener">earnings release, GlobeNewswire, Nov 12, 2026</a>. Consensus: <a href="https://www.tradingview.com/news/zacks:7ff566eff094b:0-optimumbank-s-q3-earnings-coming-up-here-s-what-you-should-know/" target="_blank" rel="noopener">Zacks earnings preview</a> (pre-release; EPS unchanged over the prior seven days; analyst count not given). Peers: Q3 2026 8-K Exhibit 99.1 for <a href="https://www.sec.gov/Archives/edgar/data/0001901637/000156276226000122/exhibit991.htm" target="_blank" rel="noopener">USCB</a>, <a href="https://www.sec.gov/Archives/edgar/data/0001649739/000164973926000143/bayfirstq32026earningsrele.htm" target="_blank" rel="noopener">BAFN</a> and <a href="https://www.sec.gov/Archives/edgar/data/0000726601/000072660126000027/ex991.htm" target="_blank" rel="noopener">CCBG</a>. Revenue is net interest income plus noninterest income. BAFN efficiency ratio is computed from its release; BAFN capital ratios are bank-level. Net charge-off ratio for OPHC is $11K annualized over average loans. Growth rates and margins were recomputed from dollar amounts. The 5% Tier 1 leverage line is the regulatory well-capitalized minimum, not a target. As of Nov 13, 2026. Not investment advice.</p>
+</div>
+<div id="tip" hidden></div>
+<script>
+const D={
+ "company": "OptimumBank Holdings, Inc.",
+ "ticker": "OPHC",
+ "exchange": "NYSE American",
+ "type": "bank",
+ "fiscal_period": "Q3 2026",
+ "calendar_dates": "2026-07-01 to 2026-09-30",
+ "release_date": "2026-11-12 16:10 ET",
+ "source_url": "https://www.globenewswire.com/news-release/2026/11/12/3402232/0/en/optimumbank-holdings-inc-financial-performance-for-the-third-quarter-of-2026.html",
+ "units": "USD thousands unless noted; all GAAP (company reports no adjusted EPS); diluted EPS restated by company after April 2026 preferred-to-common exchange",
+ "quarters": [
+  "Q3 2025",
+  "Q4 2025",
+  "Q1 2026",
+  "Q2 2026",
+  "Q3 2026"
+ ],
+ "series": {
+  "nii": [
+   11048,
+   11871,
+   13190,
+   14697,
+   16781
+  ],
+  "int_inc": [
+   16321,
+   17438,
+   19453,
+   21724,
+   25112
+  ],
+  "int_exp": [
+   5273,
+   5567,
+   6263,
+   7027,
+   8331
+  ],
+  "nonii": [
+   1982,
+   1727,
+   1784,
+   2486,
+   2836
+  ],
+  "nonie": [
+   6604,
+   6743,
+   8006,
+   8382,
+   8996
+  ],
+  "provision": [
+   763,
+   398,
+   770,
+   -37,
+   1066
+  ],
+  "net_income": [
+   4323,
+   4853,
+   4663,
+   6655,
+   7172
+  ],
+  "eps_diluted": [
+   0.18,
+   0.21,
+   0.2,
+   0.28,
+   0.3
+  ],
+  "eps_basic": [
+   0.37,
+   0.42,
+   0.39,
+   0.4,
+   0.3
+  ],
+  "nim_pct": [
+   4.37,
+   4.39,
+   4.49,
+   4.57,
+   4.63
+  ],
+  "cost_ibl_pct": [
+   3.48,
+   3.34,
+   3.26,
+   3.3,
+   3.49
+  ],
+  "efficiency_pct": [
+   50.68,
+   49.59,
+   53.47,
+   48.78,
+   45.86
+  ],
+  "roaa_pct": [
+   1.68,
+   1.77,
+   1.56,
+   2.04,
+   1.95
+  ],
+  "roae_pct": [
+   15.17,
+   16.23,
+   15.12,
+   20.34,
+   19.99
+  ],
+  "total_assets": [
+   1083043,
+   1111678,
+   1268735,
+   1400937,
+   1576100
+  ],
+  "loans": [
+   813722,
+   958793,
+   1090894,
+   1217084,
+   1367318
+  ],
+  "deposits": [
+   959487,
+   931750,
+   1092883,
+   1214045,
+   1342826
+  ],
+  "equity": [
+   116888,
+   121897,
+   126848,
+   134380,
+   149389
+  ],
+  "acl": [
+   10018,
+   10273,
+   11061,
+   11020,
+   12120
+  ],
+  "tbv_ps": [
+   4.97,
+   5.18,
+   5.37,
+   5.65,
+   5.98
+  ],
+  "tier1_lev_pct": [
+   11.71,
+   11.39,
+   10.74,
+   10.54,
+   12.23
+  ],
+  "tce_pct": [
+   10.79,
+   10.97,
+   10.0,
+   9.59,
+   9.48
+  ],
+  "revenue": [
+   13030,
+   13598,
+   14974,
+   17183,
+   19617
+  ],
+  "acl_to_loans_pct": [
+   1.23,
+   1.07,
+   1.01,
+   0.91,
+   0.89
+  ]
+ },
+ "consensus": {
+  "eps": {
+   "value": 0.27,
+   "provider": "Zacks",
+   "basis": "diluted EPS (Zacks basis; assumed GAAP, OPHC reports no adjusted EPS)",
+   "as_of": "pre-release (Zacks preview, unchanged over prior 7 days)",
+   "url": "https://www.tradingview.com/news/zacks:7ff566eff094b:0-optimumbank-s-q3-earnings-coming-up-here-s-what-you-should-know/"
+  },
+  "revenue": {
+   "value_k": 17650,
+   "provider": "Zacks",
+   "as_of": "pre-release",
+   "note": "article printed $17.65 billion; +35.5% YoY implies $17.65 million",
+   "url": "https://www.tradingview.com/news/zacks:7ff566eff094b:0-optimumbank-s-q3-earnings-coming-up-here-s-what-you-should-know/"
+  }
+ },
+ "computed": {
+  "revenue": {
+   "yoy_pct": 50.6,
+   "qoq_pct": 14.2
+  },
+  "nii": {
+   "yoy_pct": 51.9,
+   "qoq_pct": 14.2
+  },
+  "net_income": {
+   "yoy_pct": 65.9,
+   "qoq_pct": 7.8
+  },
+  "eps_diluted": {
+   "yoy_pct": 66.7,
+   "qoq_pct": 7.1
+  },
+  "loans": {
+   "yoy_pct": 68.0,
+   "qoq_pct": 12.3
+  },
+  "deposits": {
+   "yoy_pct": 40.0,
+   "qoq_pct": 10.6
+  },
+  "total_assets": {
+   "yoy_pct": 45.5,
+   "qoq_pct": 12.5
+  },
+  "nonie": {
+   "yoy_pct": 36.2,
+   "qoq_pct": 7.3
+  },
+  "tbv_ps": {
+   "yoy_pct": 20.3,
+   "qoq_pct": 5.8
+  },
+  "nim_bp_yoy": 26,
+  "nim_bp_qoq": 6,
+  "eff_bp_yoy": -482,
+  "eff_bp_qoq": -292,
+  "efficiency_recalc_pct": 45.86,
+  "nco_k": 11,
+  "nco_ratio_annual_pct": 0.003,
+  "provision_to_nco_x": 97.0,
+  "late_fee_k": 900,
+  "nonii_ex_latefee_k": 1936,
+  "nonii_ex_latefee_yoy_pct": -2.3,
+  "tier1_lev_cushion_bp": 723,
+  "eps_vs_cons": {
+   "diff": 0.03,
+   "pct": 11.1
+  },
+  "rev_vs_cons": {
+   "diff_k": 1967,
+   "pct": 11.1
+  },
+  "rev_vs_cons_ex_latefee_pct": 6.0,
+  "peer_position": {
+   "rev_yoy": {
+    "ophc": 50.6,
+    "peer_median": 8.1,
+    "gap": 42.5,
+    "rank": "1 of 4",
+    "better_is": "higher"
+   },
+   "nim": {
+    "ophc": 4.63,
+    "peer_median": 4.07,
+    "gap": 0.56,
+    "rank": "1 of 4",
+    "better_is": "higher"
+   },
+   "eff": {
+    "ophc": 45.86,
+    "peer_median": 65.63,
+    "gap": -19.77,
+    "rank": "1 of 4",
+    "better_is": "lower"
+   },
+   "roaa": {
+    "ophc": 1.95,
+    "peer_median": 1.27,
+    "gap": 0.68,
+    "rank": "1 of 4",
+    "better_is": "higher"
+   },
+   "nco": {
+    "ophc": 0.003,
+    "peer_median": 0.08,
+    "gap": -0.08,
+    "rank": "2 of 4",
+    "better_is": "lower"
+   },
+   "t1lev": {
+    "ophc": 12.23,
+    "peer_median": 8.88,
+    "gap": 3.35,
+    "rank": "2 of 4",
+    "better_is": "higher"
+   }
+  },
+  "net_income_bridge_k": [
+   [
+    "Q3 2025 net income",
+    4323,
+    "total"
+   ],
+   [
+    "Net interest income",
+    5733,
+    "d"
+   ],
+   [
+    "Noninterest income",
+    854,
+    "d"
+   ],
+   [
+    "Noninterest expense",
+    -2392,
+    "d"
+   ],
+   [
+    "Credit loss expense",
+    -303,
+    "d"
+   ],
+   [
+    "Income taxes",
+    -1043,
+    "d"
+   ],
+   [
+    "Q3 2026 net income",
+    7172,
+    "total"
+   ]
+  ],
+  "tax_k": {
+   "Q3 2025": 1340,
+   "Q3 2026": 2383,
+   "eff_rate_q3_2026_pct": 24.9
+  }
+ },
+ "peers": [
+  {
+   "ticker": "USCB",
+   "name": "USCB Financial Holdings",
+   "period": "Q3 2026 (Jul 1-Sep 30, 2026)",
+   "released": "2026-10-22",
+   "why": "Miami-based commercial bank, closest direct competitor in OPHC's South Florida market",
+   "rev_k": [
+    24958,
+    26972
+   ],
+   "eps": [
+    0.45,
+    0.51
+   ],
+   "nim": 3.37,
+   "eff": 54.62,
+   "roaa": 1.27,
+   "nco": 0.0,
+   "t1lev": 8.88,
+   "cet1": 11.23,
+   "assets_k": 3011481,
+   "url": "https://www.sec.gov/Archives/edgar/data/0001901637/000156276226000122/exhibit991.htm",
+   "rev_yoy": 8.1
+  },
+  {
+   "ticker": "BAFN",
+   "name": "BayFirst Financial",
+   "period": "Q3 2026 (Jul 1-Sep 30, 2026)",
+   "released": "2026-10-29",
+   "why": "Florida community bank of similar size ($1.15B assets)",
+   "rev_k": [
+    10248,
+    11728
+   ],
+   "eps": [
+    -4.71,
+    -0.04
+   ],
+   "nim": 4.07,
+   "eff": 109.3,
+   "roaa": -0.24,
+   "nco": 1.52,
+   "t1lev": 8.79,
+   "cet1": 11.15,
+   "assets_k": 1147929,
+   "note": "net loss; $2.3M one-time costs; Bank-level capital; efficiency computed",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001649739/000164973926000143/bayfirstq32026earningsrele.htm",
+   "rev_yoy": 14.4
+  },
+  {
+   "ticker": "CCBG",
+   "name": "Capital City Bank Group",
+   "period": "Q3 2026 (Jul 1-Sep 30, 2026)",
+   "released": "2026-10-20",
+   "why": "Florida-headquartered bank with a high-NIM profile; larger ($4.4B) benchmark",
+   "rev_k": [
+    65888,
+    64394
+   ],
+   "eps": [
+    0.93,
+    0.99
+   ],
+   "nim": 4.42,
+   "eff": 65.63,
+   "roaa": 1.53,
+   "nco": 0.08,
+   "t1lev": 12.31,
+   "cet1": 20.43,
+   "assets_k": 4396752,
+   "url": "https://www.sec.gov/Archives/edgar/data/0000726601/000072660126000027/ex991.htm",
+   "rev_yoy": -2.3
+  }
+ ],
+ "thesis": "Record quarter beat the Street, and OPHC led every Florida peer on growth, margin and efficiency",
+ "lede": "OptimumBank earned a record $7.2 million, or $0.30 a share, three cents above the Zacks consensus, on revenue up 51% from a year ago. It beat its three Florida peers on revenue growth, margin, efficiency and return on assets. The open question is speed: loans grew 68% in a year while the reserve fell to 0.89% of loans, and about $0.9 million of the revenue was a one-time late fee.",
+ "takeaways": [
+  "Diluted EPS of $0.30 beat the $0.27 Zacks consensus by 11%; revenue of $19.6M beat the $17.65M estimate by 11% (6% without the $0.9M late fee).",
+  "Revenue grew 50.6% YoY, against a peer median of 8.1% (USCB, BAFN, CCBG); OPHC ranks #1 of 4.",
+  "NIM rose 26 bp YoY to 4.63%, the highest of the four banks; efficiency ratio fell 4.8 points to 45.86%, also #1 of 4.",
+  "Gross loans grew 68.0% YoY to $1.37B while the reserve fell from 1.23% to 0.89% of loans.",
+  "Tier 1 leverage rose to 12.23% after a $31.0M capital contribution funded partly by $35M of 7.50% subordinated notes."
+ ],
+ "script_seed": [
+  {
+   "state": "tier-0",
+   "text": "OptimumBank's third quarter: it beat estimates and led its Florida peers on growth."
+  },
+  {
+   "state": "tier-1",
+   "text": "Diluted earnings came in at thirty cents a share, eleven percent above the Zacks consensus of twenty-seven cents."
+  },
+  {
+   "state": "tier-2",
+   "text": "Revenue reached nineteen point six million dollars, up fifty-one percent from a year ago. That's the fastest growth of four Florida banks we compared."
+  },
+  {
+   "state": "tier-3",
+   "text": "Net interest margin rose twenty-six basis points to four point six three percent, and the efficiency ratio, forty-five point nine, was also best of the group."
+  },
+  {
+   "state": "tier-4",
+   "text": "The watch item: loans grew sixty-eight percent in a year, to one point three seven billion, while the reserve thinned to point eight nine percent of loans."
+  }
+ ]
+};
+const S=D.series,M=D.computed,Q=D.quarters.map(q=>q.replace(" 20","'"));
+document.getElementById("thesis").textContent=D.thesis+".";
+document.getElementById("lede").textContent=D.lede;
+const fm=(v,u)=>u==="$k"?"$"+(v/1000).toFixed(1)+"M":u==="$b"?"$"+(v/1e6).toFixed(2)+"B":u==="%"?v.toFixed(2)+"%":u==="$"?"$"+v.toFixed(2):v;
+const K=[["Diluted EPS","$0.30","+67% YoY · beat est. $0.27","up"],["Revenue","$19.6M","+50.6% YoY · beat est. $17.65M","up"],["Net interest margin","4.63%","+26 bp YoY","up"],["Efficiency ratio","45.86%","−4.8 pts YoY (better)","up"],["Reserve to loans","0.89%","from 1.23% a year ago","wn"],["Tier 1 leverage","12.23%","+169 bp QoQ","up"]];
+document.getElementById("kpis").innerHTML=K.map(k=>`<div class="kpi"><div class="l">${k[0]}</div><div class="v">${k[1]}</div><div class="c ${k[3]}">${k[2]}</div></div>`).join("");
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const tip=document.getElementById("tip");
+function hov(el,txt){el.addEventListener("pointerenter",e=>{tip.textContent=txt;tip.hidden=false});el.addEventListener("pointermove",e=>{tip.style.left=Math.min(e.clientX+12,innerWidth-180)+"px";tip.style.top=(e.clientY+12)+"px"});el.addEventListener("pointerleave",()=>tip.hidden=true)}
+const NS="http://www.w3.org/2000/svg";
+function svg(host,w,h){host.innerHTML="";const s=document.createElementNS(NS,"svg");s.setAttribute("viewBox",`0 0 ${w} ${h}`);host.appendChild(s);return s}
+function el(p,t,a,txt){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;p.appendChild(e);return e}
+function W(host){return Math.max(260,host.clientWidth)}
+function bullet(){const h=document.getElementById("c-bullet"),w=W(h),s=svg(h,w,150);
+ const rows=[["Diluted EPS",0.30,0.27,0.35,v=>"$"+v.toFixed(2)],["Revenue ($M)",19.617,17.65,22,v=>"$"+v.toFixed(1)+"M"]];
+ rows.forEach((r,i)=>{const y=20+i*68,x0=0,x1=w-70,sc=v=>x0+v/r[3]*(x1-x0);
+  el(s,"text",{x:0,y:y,"font-size":13,class:"mut"},r[0]);
+  el(s,"rect",{x:x0,y:y+8,width:x1-x0,height:24,fill:css("--rule")});
+  const b=el(s,"rect",{x:x0,y:y+14,width:sc(r[1])-x0,height:12,fill:css("--accent")});hov(b,`${r[0]} actual ${r[4](r[1])}`);
+  const t=el(s,"line",{x1:sc(r[2]),x2:sc(r[2]),y1:y+4,y2:y+36,stroke:css("--fg"),"stroke-width":2.5});hov(t,`Zacks est. ${r[4](r[2])}`);
+  el(s,"text",{x:sc(r[1])+6,y:y+25,"font-size":13,"font-weight":600},r[4](r[1]));
+  el(s,"text",{x:sc(r[2]),y:y+52,"font-size":12,class:"mut","text-anchor":"middle"},"est. "+r[4](r[2]));});}
+function trends(){const g=document.getElementById("c-trends");g.innerHTML="";
+ const P=[["Revenue grew in every quarter","revenue","$k"],["NIM widened four quarters running","nim_pct","%"],["Efficiency ratio hit a five-quarter best","efficiency_pct","%"],["Reserve to loans kept thinning","acl_to_loans_pct","%"]];
+ P.forEach(p=>{const c=document.createElement("div");c.className="chart";c.innerHTML=`<p class="t">${p[0]}</p><div></div>`;g.appendChild(c);
+  const h=c.lastChild,w=W(h),H=150,s=svg(h,w,H),v=S[p[1]],mn=Math.min(...v),mx=Math.max(...v),pad=(mx-mn)*.25||1,lo=mn-pad,hi=mx+pad;
+  const X=i=>18+i*(w-56)/4,Y=x=>H-28-(x-lo)/(hi-lo)*(H-56);
+  el(s,"line",{x1:0,x2:w,y1:H-22,y2:H-22,stroke:css("--rule")});
+  el(s,"polyline",{points:v.map((x,i)=>X(i)+","+Y(x)).join(" "),fill:"none",stroke:css("--accent"),"stroke-width":2.5});
+  v.forEach((x,i)=>{const r=el(s,"circle",{cx:X(i),cy:Y(x),r:i==4?5:3.5,fill:css("--accent")});hov(r,`${Q[i]}: ${fm(x,p[2])}`);
+   el(s,"text",{x:X(i),y:H-6,"font-size":11,class:"mut","text-anchor":"middle"},Q[i]);
+   if(i==0||i==4)el(s,"text",{x:X(i),y:Y(x)-10,"font-size":12,"font-weight":i==4?700:400,"text-anchor":"middle"},fm(x,p[2]));});});}
+function peers(){const g=document.getElementById("c-peers");g.innerHTML="";const PP=M.peer_position;
+ const meta={rev_yoy:["Revenue growth YoY, %","led by 42 pts over the median"],nim:["Net interest margin, %","highest of four"],eff:["Efficiency ratio, % (lower is better)","lowest of four"],roaa:["ROAA, %","highest of four"],nco:["Net charge-offs, % annualized","near zero"],t1lev:["Tier 1 leverage, %","second to CCBG"]};
+ const order=Object.keys(PP).sort((a,b)=>Math.abs(PP[b].gap/(PP[b].peer_median||1))-Math.abs(PP[a].gap/(PP[a].peer_median||1)));
+ order.forEach(k=>{const c=document.createElement("div");c.className="chart";c.innerHTML=`<p class="t">${meta[k][0]}: OPHC ${meta[k][1]}</p><div></div>`;g.appendChild(c);
+  const h=c.lastChild,w=W(h),H=84,s=svg(h,w,H);const pts=[["OPHC",PP[k].ophc,1]].concat(D.peers.map(p=>[p.ticker,p[k],0]));
+  const vs=pts.map(p=>p[1]).concat(PP[k].peer_median),mn=Math.min(...vs),mx=Math.max(...vs),r=(mx-mn)||1,lo=mn-r*.1,hi=mx+r*.1,X=v=>24+(v-lo)/(hi-lo)*(w-48);
+  el(s,"line",{x1:8,x2:w-8,y1:46,y2:46,stroke:css("--rule")});
+  el(s,"line",{x1:X(PP[k].peer_median),x2:X(PP[k].peer_median),y1:30,y2:62,stroke:css("--muted"),"stroke-width":1});
+  el(s,"text",{x:X(PP[k].peer_median),y:78,"font-size":11,class:"mut","text-anchor":"middle"},"median "+PP[k].peer_median);
+  const sorted=pts.slice().sort((a,b)=>a[1]-b[1]);let last=-99,flip=0;
+  sorted.forEach(p=>{const x=X(p[1]);const d=el(s,"circle",{cx:x,cy:46,r:p[2]?7:5.5,fill:p[2]?css("--accent"):css("--peer")});hov(d,`${p[0]}: ${p[1]}`);
+   flip=(x-last<44)?1-flip:0;last=x;el(s,"text",{x:x,y:flip?20:32,"font-size":11.5,"font-weight":p[2]?700:400,"text-anchor":"middle",fill:p[2]?css("--accent"):css("--fg")},p[0]);});});
+ const t=document.getElementById("t-peers");const rows=[["OPHC","Q3 2026",PP.rev_yoy.ophc,4.63,45.86,1.95,M.nco_ratio_annual_pct,12.23,"1.58",1]].concat(D.peers.map(p=>[p.ticker,"Q3 2026",p.rev_yoy,p.nim,p.eff,p.roaa,p.nco,p.t1lev,(p.assets_k/1e6).toFixed(2),0]));
+ t.innerHTML="<tr><th>Bank</th><th>Period</th><th>Rev. YoY</th><th>NIM</th><th>Efficiency</th><th>ROAA</th><th>NCO</th><th>T1 lev.</th><th>Assets $B</th></tr>"+rows.map(r=>`<tr class="${r[9]?"me":""}"><td>${r[0]}</td><td>${r[1]}</td><td>${r[2].toFixed(1)}%</td><td>${r[3].toFixed(2)}%</td><td>${r[4].toFixed(1)}%</td><td>${r[5].toFixed(2)}%</td><td>${r[6].toFixed(2)}%</td><td>${r[7].toFixed(2)}%</td><td>${r[8]}</td></tr>`).join("");
+ document.getElementById("why").innerHTML=D.peers.map(p=>`<li><strong>${p.ticker}</strong> (${p.name}): ${p.why}.${p.note?" Note: "+p.note+".":""}</li>`).join("");}
+function bridge(){const h=document.getElementById("c-bridge"),w=W(h),B=M.net_income_bridge_k,rowH=30,H=B.length*rowH+10,s=svg(h,w,H),lab=Math.min(150,w*.42),x0=lab+6,x1=w-60,mx=12000,X=v=>x0+v/mx*(x1-x0);let run=0;
+ B.forEach((b,i)=>{const y=i*rowH+4;el(s,"text",{x:0,y:y+16,"font-size":12},b[0]);let a,z,col;
+  if(b[2]=="total"){a=0;z=b[1];run=b[1];col=css("--accent")}else{a=run;z=run+b[1];run=z;col=b[1]>0?css("--good"):css("--bad")}
+  const r=el(s,"rect",{x:X(Math.min(a,z)),y:y+4,width:Math.max(1,Math.abs(X(z)-X(a))),height:rowH-12,fill:col});hov(r,`${b[0]}: ${b[1]>0&&b[2]!="total"?"+":""}$${(b[1]/1000).toFixed(2)}M`);
+  el(s,"text",{x:X(Math.max(a,z))+5,y:y+16,"font-size":12,"font-weight":600},(b[2]!="total"?(b[1]>0?"+":"−"):"")+"$"+(Math.abs(b[1])/1000).toFixed(2)+"M");});}
+document.getElementById("risks").innerHTML=[
+"<strong>Growth outpacing reserves.</strong> Loans rose 68% YoY to $1.37B; the reserve fell from 1.23% to 0.89% of loans. Commercial real estate led Q3 growth (+$91.4M).",
+"<strong>Thin charge-off history.</strong> Net charge-offs were $11K, so the $1.07M provision was almost all for growth. Credit has not been tested on the new book.",
+"<strong>Funding cost.</strong> Cost of interest-bearing liabilities rose 19 bp in the quarter to 3.49%, and the new $35M of subordinated debt carries 7.50%.",
+"<strong>One-time revenue.</strong> About $0.9M of the $2.84M noninterest income was a late fee that will not repeat.",
+"<strong>Dilution and comparability.</strong> Shares were issued through the ATM program (452,725) and private sales (733,466), and prior diluted EPS was restated."].map(x=>"<li>"+x+"</li>").join("");
+function draw(){bullet();trends();peers();bridge()}
+draw();let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(draw,120)});
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",draw);
+document.getElementById("theme").addEventListener("click",()=>{const r=document.documentElement,cur=r.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");r.dataset.theme=cur=="dark"?"light":"dark";draw()});
+</script>
+
+</body></html>
