@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "pnc-q3-2026",
+    "bank": "PNC Financial Services Group",
+    "ticker": "PNC",
+    "quarter": "Q3 2026",
+    "released": "2026-10-15",
+    "headline": "PNC beat on EPS with the lowest charge-offs of six super-regional peers, but it carries the thinnest capital",
+    "added": "2026-11-13"
+  },
+  {
+    "slug": "pnbk-q3-2026",
+    "bank": "Patriot National Bancorp",
+    "ticker": "PNBK",
+    "quarter": "Q3 2026",
+    "released": "2026-11-12",
+    "headline": "Net interest income more than doubled, but expenses still ate 94 cents of every revenue dollar",
+    "added": "2026-11-13"
+  },
+  {
+    "slug": "ophc-q3-2026",
+    "bank": "OptimumBank Holdings",
+    "ticker": "OPHC",
+    "quarter": "Q3 2026",
+    "released": "2026-11-12",
+    "headline": "Record quarter beat the Street, and OPHC led every Florida peer on growth, margin and efficiency",
+    "added": "2026-11-13"
+  }
+]

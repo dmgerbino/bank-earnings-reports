@@ -1,0 +1,375 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body>
+<style>
+.pub-nav{max-width:46rem;margin:0 auto;padding:12px 16px 0;font:600 .875rem/1.4 var(--sans,system-ui,-apple-system,sans-serif)}
+.pub-nav a,.pub-media a{color:var(--accent,var(--brand,#2A6DB0))}
+.pub-media{margin:1.5rem 0;font-family:var(--sans,system-ui,-apple-system,sans-serif)}
+.pub-vids{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px;max-width:520px}
+.pub-vids figure{margin:0}
+.pub-vids video{display:block;width:100%;aspect-ratio:9/16;background:#000;border-radius:10px}
+.pub-vids figcaption{font-size:.875rem;color:var(--muted,#5A626C);margin-top:6px}
+.pub-img img{display:block;width:100%;max-width:520px;height:auto;border-radius:10px;border:1px solid var(--rule,var(--border,#DDE1E6))}
+.pub-dl{font-size:.875rem;color:var(--muted,#5A626C);line-height:1.8}
+</style><nav class="pub-nav"><a href="../">← All bank earnings reports</a></nav>
+
+<title>PNC Q3 2026 Earnings</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap">
+<style>
+/* Layout: one reading column (~44rem) of report sections; charts span the column, peer and trend panels wrap to one column on phones. */
+:root{
+  --bg:#F6F7F9; --surface:#FFFFFF; --fg:#11161C; --muted:#56606C; --rule:#D9DEE4; --grid:#E8EBEF;
+  --accent:#2A6DB0; --accent-soft:#D6E5F4; --pos:#17794A; --neg:#BE3B26; --peer:#8F97A2; --band:#E9EDF2;
+  --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --s-1:0.875rem; --s0:1rem; --s1:1.25rem; --s2:1.5625rem; --s3:1.953rem; --s4:2.441rem;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#000000; --surface:#0D0F12; --fg:#F0EDEA; --muted:#A39F99; --rule:#25292E; --grid:#1A1D21;
+  --accent:#5B9BD5; --accent-soft:#16283A; --pos:#3DD68C; --neg:#FF6B52; --peer:#6E747C; --band:#15181C; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#000000; --surface:#0D0F12; --fg:#F0EDEA; --muted:#A39F99; --rule:#25292E; --grid:#1A1D21;
+  --accent:#5B9BD5; --accent-soft:#16283A; --pos:#3DD68C; --neg:#FF6B52; --peer:#6E747C; --band:#15181C; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:var(--s0);line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 4rem}
+main{max-width:46rem;margin:0 auto}
+header.top{padding-block:2.5rem 1rem;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:var(--sans);font-size:var(--s-1);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+h1{font-size:var(--s4);line-height:1.15;margin:.5rem 0 1rem;text-wrap:balance;font-weight:700}
+h2{font-size:var(--s2);line-height:1.25;margin:0 0 .25rem;text-wrap:balance}
+h3{font-family:var(--sans);font-size:var(--s0);font-weight:600;margin:0 0 .25rem;text-wrap:balance}
+p{margin:.5rem 0;max-width:65ch}
+.lede{font-size:var(--s1);line-height:1.5}
+.meta{font-family:var(--sans);font-size:var(--s-1);color:var(--muted)}
+section{padding-block:2rem;border-bottom:1px solid var(--rule)}
+section>.num{font-family:var(--sans);font-size:var(--s-1);color:var(--muted);font-variant-numeric:tabular-nums}
+.sans,table,.kpi,.chart,.legend{font-family:var(--sans)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(10.5rem,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:1rem}
+.kpi{background:var(--surface);padding:1rem;min-width:0}
+.kpi .l{font-size:var(--s-1);color:var(--muted)}
+.kpi .v{font-size:var(--s3);font-weight:600;font-variant-numeric:tabular-nums;line-height:1.2;margin:.25rem 0}
+.kpi .d{font-size:var(--s-1);font-variant-numeric:tabular-nums}
+.pos{color:var(--pos)} .neg{color:var(--neg)} .mut{color:var(--muted)}
+.chart{margin-top:1rem;width:100%;min-width:0}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart text{fill:var(--muted);font-size:14px;font-family:var(--sans)}
+.chart text.lbl{fill:var(--fg)}
+.chart .fgtxt{fill:var(--fg);font-weight:600}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1.25rem;margin-top:1rem}
+.panel{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:.875rem;min-width:0}
+.panel .chart{margin-top:.25rem}
+.legend{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;font-size:var(--s-1);color:var(--muted);margin-top:.75rem}
+.legend span{display:inline-flex;align-items:center;gap:.4rem}
+.sw{width:10px;height:10px;border-radius:50%;display:inline-block}
+.tbl{overflow-x:auto;margin-top:1rem;border:1px solid var(--rule);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:var(--s-1);font-variant-numeric:tabular-nums}
+th,td{padding:.5rem .625rem;text-align:right;border-bottom:1px solid var(--grid);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--muted);font-weight:500}
+tr.me td{background:var(--accent-soft);font-weight:600}
+ul.tight{padding-left:1.1rem;margin:.5rem 0} ul.tight li{margin:.35rem 0;max-width:65ch}
+details{margin-top:1rem;font-family:var(--sans);font-size:var(--s-1)}
+summary{cursor:pointer;color:var(--accent)}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.toggle{float:right;font-family:var(--sans);font-size:var(--s-1);background:transparent;color:var(--muted);border:1px solid var(--rule);border-radius:999px;padding:.3rem .75rem;cursor:pointer}
+#tip{position:fixed;pointer-events:none;background:var(--fg);color:var(--bg);font-family:var(--sans);font-size:var(--s-1);padding:.4rem .6rem;border-radius:6px;max-width:16rem;opacity:0;transition:opacity .1s;z-index:20;font-variant-numeric:tabular-nums}
+.quote{border-left:2px solid var(--accent);padding-left:.875rem;margin:1rem 0;font-style:italic}
+@media (prefers-reduced-motion:reduce){#tip{transition:none}}
+</style>
+
+<main>
+<header class="top">
+  <button class="toggle" id="themeBtn" type="button">Theme</button>
+  <div class="eyebrow">PNC · Q3 2026 earnings · bank</div>
+  <h1>PNC beat on EPS with the lowest charge-offs of six super-regional peers, but it carries the thinnest capital</h1>
+  <p class="lede" id="lede"></p>
+  <p class="meta">Quarter ended Sep 30, 2026 (Jul 1 to Sep 30). Released Oct 15, 2026. Figures in USD. Data as of Nov 12, 2026.</p>
+</header>
+<!-- pub:media --><section class="pub-media" aria-label="Video and infographic"><h2>Watch</h2><div class="pub-vids"><figure><video controls playsinline preload="metadata" poster="PNC-Q3-2026-mobile.png" src="PNC-Q3-2026-captioned.mp4"></video><figcaption>Full video</figcaption></figure><figure><video controls playsinline preload="metadata" poster="PNC-Q3-2026-mobile.png" src="PNC-Q3-2026-short-captioned.mp4"></video><figcaption>60-second cut</figcaption></figure></div><h2>Infographic</h2><a class="pub-img" href="PNC-Q3-2026-infographic.png"><img src="PNC-Q3-2026-infographic.png" alt="PNC Financial Services Group Q3 2026 earnings infographic" loading="lazy"></a><p class="pub-dl">Downloads: <a href="PNC-Q3-2026-clean.mp4" download>Full video, no captions</a> · <a href="PNC-Q3-2026-short-clean.mp4" download>60-second cut, no captions</a> · <a href="PNC-Q3-2026.srt" download>Captions (.srt)</a> · <a href="PNC-Q3-2026-short.srt" download>60-second captions (.srt)</a> · <a href="PNC-Q3-2026-mobile.png" download>Mobile graphic (PNG)</a> · <a href="PNC-Q3-2026-mobile.svg" download>Mobile graphic (SVG)</a> · <a href="PNC-Q3-2026-infographic.svg" download>Infographic (SVG)</a></p></section><!-- /pub:media -->
+
+<section aria-labelledby="h-kpi">
+  <h2 id="h-kpi">The quarter in six numbers</h2>
+  <div class="kpis" id="kpis"></div>
+  <p class="meta" style="margin-top:.75rem">Estimates: Zacks, S&amp;P Global Market Intelligence and Visible Alpha (via StockStory), MarketBeat, all pre-release. NIM and efficiency estimates are Zacks five-analyst averages.</p>
+</section>
+
+<section aria-labelledby="h-exp">
+  <h2 id="h-exp">EPS cleared every estimate; revenue and NIM fell just short</h2>
+  <p>Adjusted EPS of $5.09 was 2.2% to 3.7% above the three estimates we found. Total revenue of $6.56B (GAAP) was 0.6% to 0.7% below a $6.60B to $6.61B consensus, and net interest income was about 1% under StockStory's $4.25B estimate.</p>
+  <div class="chart" id="c-bullets" role="img" aria-label="Bullet charts of actual versus consensus for adjusted EPS, revenue and NIM"></div>
+  <div class="legend"><span><i class="sw" style="background:var(--accent);border-radius:2px"></i>Actual</span><span><i class="sw" style="background:var(--fg);width:2px;height:12px;border-radius:0"></i>Estimate (one tick per provider)</span></div>
+  <p class="meta">Management's Q3 guidance from July was not gathered for this run, so actual versus prior guidance is not shown.</p>
+</section>
+
+<section aria-labelledby="h-moved">
+  <h2 id="h-moved">Net interest income did the lifting: up 15.3% from a year ago</h2>
+  <p>NII rose to $4.21B and supplied $558M of the $647M year-over-year revenue gain. NIM is 15 bp higher than a year ago but dipped 2 bp from Q2. The year-over-year growth includes FirstBank, acquired Jan 5, 2026 (about $16B of loans). Fee income fell 6% from a strong Q2, when capital markets fees were $577M against $433M this quarter.</p>
+  <div class="grid2" id="c-trends"></div>
+  <h3 style="margin-top:1.5rem">Revenue grew $647M year over year, 86% of it from net interest income</h3>
+  <div class="chart" id="c-contrib" role="img" aria-label="Contribution to revenue growth"></div>
+</section>
+
+<section aria-labelledby="h-peers">
+  <h2 id="h-peers">Best credit and second-best efficiency of six; last on capital</h2>
+  <p>Against five super-regional competitors' Q3 2026 results (all quarters ended Sep 30, 2026), PNC had the lowest net charge-off ratio and the second-lowest efficiency ratio. Its estimated 9.8% CET1 ratio is the lowest of the group. Panels are sorted by how far PNC sits from the peer median, worst first.</p>
+  <div class="grid2" id="c-peers"></div>
+  <div class="legend"><span><i class="sw" style="background:var(--accent)"></i>PNC</span><span><i class="sw" style="background:var(--peer)"></i>Peer</span><span><i class="sw" style="background:var(--muted);width:2px;height:12px;border-radius:0"></i>Peer median (excludes PNC)</span></div>
+  <div class="tbl"><table id="t-peers"></table></div>
+  <ul class="tight sans" style="font-size:var(--s-1)" id="peerwhy"></ul>
+  <p class="meta">Growth rates use GAAP revenue and GAAP diluted EPS. Truist's figures carry a $1.4B securities loss and a loan sale; Fifth Third's include Comerica (closed Feb 1, 2026) against a pre-merger year-ago quarter; PNC's include FirstBank. KeyCorp publishes a cash efficiency ratio; U.S. Bancorp's revenue and NIM basis is not stated in its Q3 release.</p>
+</section>
+
+<section aria-labelledby="h-guide">
+  <h2 id="h-guide">Q4 outlook: NII up about 4%, but expenses up about 5%</h2>
+  <p>On the Oct 15 call, CFO Rob Reilly guided Q4 against Q3. Applied to Q3, that implies roughly $4.37B of NII, $2.22B of fees and $3.91B of adjusted expense. Next-quarter EPS consensus is $5.10 (16 analysts, as of Nov 12), essentially flat with Q3's $5.09.</p>
+  <div class="chart" id="c-guide" role="img" aria-label="Q4 2026 guidance versus Q3"></div>
+  <p class="meta">Other noninterest income guided to about $250M and net charge-offs to about $250M. Full-year 2026 outlook versus 2025: revenue up about 13.7%, NII up about 15.5%, noninterest expense up about 9.5%, effective tax rate about 19.5%. The prior outlook was not gathered, so we cannot say whether the full-year view was raised.</p>
+  <p class="quote">"Importantly, we continue to demonstrate strong momentum across the franchise." <span class="meta" style="font-style:normal">Rob Reilly, CFO, on the call</span></p>
+</section>
+
+<section aria-labelledby="h-profit">
+  <h2 id="h-profit">Pretax income rose $335M as revenue outran a $290M expense increase</h2>
+  <div class="chart" id="c-bridge" role="img" aria-label="Pretax income bridge from Q3 2025 to Q3 2026"></div>
+  <p>Noninterest expense fell 8.5% from Q2, which carried $127M of integration costs and a $140M foundation contribution. The efficiency ratio improved to 57% from 59% a year ago, and adjusted expense grew 7.6% against 10.9% revenue growth, about 3.3 points of operating leverage.</p>
+  <h3 style="margin-top:1.5rem">GAAP EPS of $4.97 becomes $5.09 adjusted after $0.12 of integration and Visa items</h3>
+  <div class="chart" id="c-adj" role="img" aria-label="GAAP to adjusted EPS"></div>
+  <p class="meta">Items: FirstBank integration costs of $36M ($27M expense, $9M in noninterest income) and a net $25M Visa-related loss ($11M gain, $36M Class B-3 derivative adjustment), $48M after tax.</p>
+  <h3 style="margin-top:1.5rem">CET1 sits 3.3 points above the well-capitalized minimum, below its 10% target</h3>
+  <div class="chart" id="c-cet1" role="img" aria-label="CET1 ratio versus threshold"></div>
+  <p class="meta">The 6.5% well-capitalized threshold is a regulatory minimum, not a target. Management's stated target is 10%. CET1 was 10.7% a year ago, before FirstBank.</p>
+  <div class="tbl"><table id="t-seg"></table></div>
+</section>
+
+<section aria-labelledby="h-risk">
+  <h2 id="h-risk">Risks and open questions</h2>
+  <ul class="tight">
+    <li><strong>Capital.</strong> CET1 of 9.8% is 0.9 points under the peer median and 0.2 below the 10% target, while PNC lifted its dividend 17.6% to $2.00 and plans Q4 buybacks near Q3's $0.6B.</li>
+    <li><strong>Margin.</strong> NIM of 2.94% missed the 3.0% estimate and ranks fifth of six; Q4 NII growth of about 4% depends on loans growing about 2.5%.</li>
+    <li><strong>Reserve release.</strong> Provision of $189M ran $68M below $257M of charge-offs, and the reserve ratio fell to 1.42% from 1.61% a year ago.</li>
+    <li><strong>Expense run rate.</strong> Guided Q4 adjusted expense up about 5%, faster than the 4% NII growth guided.</li>
+    <li><strong>Fees.</strong> Capital markets fees fell $144M from Q2, and total fee income was down 6% sequentially.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="h-watch">
+  <h2 id="h-watch">What to watch in Q4</h2>
+  <ul class="tight">
+    <li>NII near $4.37B and NIM moving toward the 3% management says its math points to.</li>
+    <li>CET1 back toward 10% while buybacks continue at about $0.6B.</li>
+    <li>Net charge-offs near the guided $250M and whether provision keeps running below them.</li>
+    <li>Adjusted expense near $3.9B as FirstBank integration costs wind down.</li>
+    <li>Peers report again in mid-January 2027: U.S. Bancorp, Truist, Citizens, Fifth Third and KeyCorp.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="h-gaps">
+  <h2 id="h-gaps">What the data doesn't show</h2>
+  <ul class="tight">
+    <li>CET1 of 9.8% is the release's estimate; the final figure comes with the 10-Q and regulatory filings.</li>
+    <li>Revenue consensus providers don't state GAAP or FTE basis; we compared against GAAP revenue. Zacks shows $6.59B, which looks like an FTE figure.</li>
+    <li>No LSEG or FactSet consensus was found in free coverage.</li>
+    <li>PNC's Q3 guidance from July and its prior full-year outlook were not gathered, so beat or miss against guidance is not shown.</li>
+    <li>PNC's proxy compensation peer group could not be read; peers were chosen as direct competitors.</li>
+    <li>Year-over-year growth for PNC and Fifth Third includes acquisitions, and Truist's quarter carries a securities loss, so growth ranks are not like-for-like.</li>
+    <li>NIM for Q3 2024 to Q2 2025 was rebuilt from the spread plus the noninterest-bearing funds benefit; the method matches the reported Q3 2025 figure.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="h-method">
+  <h2 id="h-method">Method and sources</h2>
+  <p class="sans" style="font-size:var(--s-1)">PNC figures are GAAP from the Q3 2026 release and financial supplement unless labeled adjusted (PNC's "as adjusted" excludes integration costs and significant items). The nine-quarter history joins the Q3 2026 and Q3 2025 supplements. Growth rates, margins and ranks were recomputed from dollar amounts in a script. Consensus is pre-release, read from earnings-day coverage dated Oct 15, 2026. Peer data is each bank's Q3 2026 release, with Zacks or Earnings Whispers for consensus. Data was read on Nov 12, 2026.</p>
+  <ul class="tight sans" style="font-size:var(--s-1)" id="srcs"></ul>
+  <p class="meta">Not investment advice.</p>
+</section>
+</main>
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script>
+const D = {"Q": ["3Q24", "4Q24", "1Q25", "2Q25", "3Q25", "4Q25", "1Q26", "2Q26", "3Q26"], "hist": {"nii": [3410, 3523, 3476, 3555, 3648, 3731, 3961, 4107, 4206], "nonii": [2022, 2044, 1976, 2106, 2267, 2340, 2204, 2768, 2356], "revenue": [5432, 5567, 5452, 5661, 5915, 6071, 6165, 6875, 6562], "provision": [243, 156, 219, 254, 167, 139, 210, 191, 189], "nonie": [3327, 3506, 3387, 3383, 3461, 3603, 3768, 4098, 3751], "net_income": [1505, 1627, 1499, 1643, 1822, 2033, 1772, 2055, 2097], "ni_common": [1406, 1514, 1408, 1542, 1735, 1934, 1686, 1953, 2006], "eps_dil": [3.49, 3.77, 3.51, 3.85, 4.35, 4.88, 4.13, 4.81, 4.97], "eff_pct": [61, 63, 62, 60, 59, 59, 61, 60, 57], "nim_pct": [2.64, 2.75, 2.78, 2.8, 2.79, 2.84, 2.95, 2.96, 2.94], "ib_dep_rate": [2.72, 2.43, 2.23, 2.24, 2.32, 2.14, 1.96, 1.91, 1.98], "nco": [286, 250, 205, 198, 179, 162, 253, 226, 257], "nco_pct": [0.36, 0.31, 0.26, 0.25, 0.22, 0.2, 0.29, 0.25, 0.28]}, "cur": {"adj_eps": 5.09, "adj_eps_2q": 4.85, "adj_items_eps": 0.12, "adj_items_eps_2q": 0.04, "integration": 36, "integration_exp": 27, "integration_nonii": 9, "visa_net": -25, "visa_gain": 11, "visa_deriv": -36, "items_after_tax": -48, "adj_expense": 3724, "adj_expense_2q": 3837, "adj_expense_3q25": 3461, "ppnr": 2811, "ppnr_2q": 2777, "ppnr_3q25": 2454, "fee": 2142, "fee_2q": 2279, "fee_3q25": 2069, "other_nonii": 214, "other_nonii_2q": 489, "avg_loans": 372.2, "avg_loans_2q": 363.2, "avg_loans_3q25": 325.9, "pe_loans": 378.8, "avg_dep": 461.2, "avg_dep_2q": 457.0, "avg_dep_3q25": 431.8, "acl_pct": 1.42, "acl_pct_2q": 1.48, "acl_pct_3q25": 1.61, "npl": 2.2, "cet1": 9.8, "cet1_2q": 9.9, "cet1_3q25": 10.7, "cet1_wellcap": 6.5, "cet1_target": 10.0, "rotce": 18.28, "roe": 13.89, "roa": 1.32, "tbv": 107.64, "bv": 142.17, "div_old": 1.7, "div_new": 2.0, "returned": 1.4, "divs": 0.8, "buybacks": 0.6, "tax": 20.0}, "fees": {"Card & cash mgmt": 769, "Asset mgmt & brokerage": 447, "Capital markets": 433, "Lending & deposit svcs": 358, "Residential & comm. mortgage": 135}, "seg": {"Retail Banking": [1425, 1747, 1351], "Corporate & Institutional": [1552, 1588, 1545], "Asset Management": [128, 135, 120], "Other": [-1024, -1430, -1208]}, "m": {"revenue": {"cur": 6562, "qoq": -4.6, "yoy": 10.9}, "nii": {"cur": 4206, "qoq": 2.4, "yoy": 15.3}, "nonii": {"cur": 2356, "qoq": -14.9, "yoy": 3.9}, "nonie": {"cur": 3751, "qoq": -8.5, "yoy": 8.4}, "net_income": {"cur": 2097, "qoq": 2.0, "yoy": 15.1}, "eps_dil": {"cur": 4.97, "qoq": 3.3, "yoy": 14.3}, "provision": {"cur": 189, "qoq": -1.0, "yoy": 13.2}, "eff_calc_pct": 57.2, "eff_adj_calc_pct": 56.5, "nim_bp_yoy": 15, "nim_bp_qoq": -2, "eff_pt_yoy": -2, "provision_minus_nco": -68, "cet1_cushion_pt": 3.3, "adj_eps_qoq": 4.9, "adj_expense_yoy": 7.6, "op_leverage_yoy_pt": 3.3, "ppnr_yoy": 14.5, "avg_loans_yoy": 14.2, "avg_loans_qoq": 2.5, "avg_dep_yoy": 6.8, "fee_yoy": 3.5, "fee_qoq": -6.0, "div_raise_pct": 17.6, "gaap_adj_gap_eps": 0.12, "rev_bridge": {"total": 647, "nii": 558, "nonii": 89, "nii_share": 86}, "pretax": {"cur": 2622, "ya": 2287, "d_nii": 558, "d_nonii": 89, "d_prov": -22, "d_exp": -290}, "vs_consensus": [{"metric": "adj_eps", "provider": "Zacks", "est": 4.97, "actual": 5.09, "diff": 0.12, "pct": 2.4}, {"metric": "adj_eps", "provider": "S&P Global Market Intelligence / Visible Alpha (via StockStory)", "est": 4.98, "actual": 5.09, "diff": 0.11, "pct": 2.2}, {"metric": "adj_eps", "provider": "MarketBeat", "est": 4.91, "actual": 5.09, "diff": 0.18, "pct": 3.7}, {"metric": "revenue_bn", "provider": "Zacks", "est": 6.6, "actual": 6.562, "diff": -0.038, "pct": -0.6}, {"metric": "revenue_bn", "provider": "S&P Global Market Intelligence / Visible Alpha (via StockStory)", "est": 6.61, "actual": 6.562, "diff": -0.048, "pct": -0.7}, {"metric": "nim_pct", "provider": "Zacks (5-analyst avg)", "est": 3.0, "actual": 2.94, "diff": -0.06, "pct": -2.0}, {"metric": "eff_pct", "provider": "Zacks (5-analyst avg)", "est": 56.9, "actual": 57, "diff": 0.1, "pct": 0.2}, {"metric": "nii_bn", "provider": "StockStory", "est": 4.25, "actual": 4.206, "diff": -0.044, "pct": -1.0}], "eps_cons_range": [4.91, 4.98], "eps_cons_spread_pct": 1.4, "eps_beat_pct_range": [2.2, 3.7], "rev_cons_range": [6.6, 6.61], "rev_miss_pct_range": [-0.7, -0.6], "q4_implied": {"nii": 4374, "fee": 2217, "adj_exp": 3910}, "segments": {"Retail Banking": {"cur": 1425, "q2": 1747, "ya": 1351, "yoy": 5.5}, "Corporate & Institutional": {"cur": 1552, "q2": 1588, "ya": 1545, "yoy": 0.5}, "Asset Management": {"cur": 128, "q2": 135, "ya": 120, "yoy": 6.7}, "Other": {"cur": -1024, "q2": -1430, "ya": -1208, "yoy": null}}, "peer_position": {"rev_yoy": {"rank": 2, "of": 6, "peer_median": 8.7, "gap": 2.2, "better": "high"}, "eps_yoy": {"rank": 3, "of": 6, "peer_median": 9.8, "gap": 4.5, "better": "high"}, "nim": {"rank": 5, "of": 6, "peer_median": 3.0, "gap": -0.06, "better": "high"}, "eff": {"rank": 2, "of": 6, "peer_median": 60.58, "gap": -3.58, "better": "low"}, "cet1": {"rank": 6, "of": 6, "peer_median": 10.7, "gap": -0.9, "better": "high"}, "nco": {"rank": 1, "of": 6, "peer_median": 0.37, "gap": -0.09, "better": "low"}}, "peer_rows": [{"ticker": "PNC", "rev_yoy": 10.9, "eps_yoy": 14.3, "nim": 2.94, "eff": 57, "cet1": 9.8, "nco": 0.28}, {"ticker": "USB", "name": "U.S. Bancorp", "period": "Q3 2026 (Jul 1 to Sep 30, 2026)", "release": "2026-10-15", "rev_q": 7970, "rev_ya": 7330, "rev_basis": "total net revenue, basis not stated (TE in prior releases); prior-year from coverage", "rev_yoy": 8.7, "eps_q": 1.34, "eps_ya": 1.22, "eps_yoy": 9.8, "nim": 2.84, "nim_basis": "basis not stated (TE in prior releases)", "eff": 55.9, "eff_basis": "reported, basis not stated", "cet1": 10.8, "nco": 0.51, "beat": "EPS beat by 1.5% vs Zacks; revenue missed about 0.5%", "distortion": "BTIG acquisition closed Jun 1, 2026", "why": "Largest super-regional; overlaps PNC in commercial banking, payments and treasury management", "src": ["https://www.usbank.com/about-us-bank/news-and-stories/article-library/us-bancorp-reports-third-quarter-2026-results.html", "https://www.zacks.com/stock/news/3008846/u-s-bancorp-q3-earnings-beat-estimates-on-higher-nii-fee-revenue", "https://www.rttnews.com/3582790/u-s-bancorp-q3-net-income-rises-expects-q4-net-interest-income-to-be-relatively-stable.aspx"]}, {"ticker": "TFC", "name": "Truist Financial", "period": "Q3 2026 (Jul 1 to Sep 30, 2026)", "release": "2026-10-16", "rev_q": 3750, "rev_ya": 5190, "rev_basis": "GAAP", "eps_q": 0.56, "eps_ya": 1.04, "nim": 3.0, "nim_basis": "TE", "eff": 82.9, "eff_basis": "GAAP reported", "cet1": 10.7, "nco": 0.77, "beat": "Adjusted EPS $1.16 missed Zacks by $0.01", "distortion": "$1.4B pre-tax loss on AFS securities repositioning; RAC loan sale (NCO includes 39 bp from it)", "why": "Southeast and Mid-Atlantic super-regional competing head-on in PNC's southern expansion markets", "src": ["https://www.sec.gov/Archives/edgar/data/0000092230/000009223026000108/ex991-3q26.htm"], "rev_yoy": -27.7, "eps_yoy": -46.2}, {"ticker": "FITB", "name": "Fifth Third Bancorp", "period": "Q3 2026 (Jul 1 to Sep 30, 2026)", "release": "2026-10-19", "rev_q": 3279, "rev_ya": 2301, "rev_basis": "GAAP", "eps_q": 0.9, "eps_ya": 0.91, "nim": 3.34, "nim_basis": "FTE", "eff": 62.4, "eff_basis": "GAAP reported", "cet1": 10.02, "nco": 0.31, "beat": "Adjusted EPS $1.13 beat Zacks $1.09; revenue $3.28B missed $3.34B", "distortion": "Comerica acquisition closed Feb 1, 2026; prior-year quarter is pre-merger; $215M merger charges", "why": "Midwest overlap with PNC's legacy footprint (Ohio, Michigan, Kentucky)", "src": ["https://finviz.com/news/403792/fifth-third-bancorp-reports-third-quarter-2026-earnings", "https://www.zacks.com/stock/news/3010584/"], "rev_yoy": 42.5, "eps_yoy": -1.1}, {"ticker": "CFG", "name": "Citizens Financial Group", "period": "Q3 2026 (Jul 1 to Sep 30, 2026)", "release": "2026-10-16", "rev_q": 2322, "rev_ya": 2118, "rev_basis": "GAAP", "eps_q": 1.41, "eps_ya": 1.05, "nim": 3.19, "nim_basis": "FTE", "eff": 60.0, "eff_basis": "GAAP reported", "cet1": 10.5, "nco": 0.37, "beat": "EPS $1.41 beat Zacks $1.38; revenue $2.32B slightly missed $2.33B", "distortion": "none noted", "why": "Northeast and Mid-Atlantic commercial and consumer competitor in PNC markets", "src": ["https://www.sec.gov/Archives/edgar/data/0000759944/000075994426000206/a3q26earningsrelease.htm", "https://www.zacks.com/stock/news/3010070/"], "rev_yoy": 9.6, "eps_yoy": 34.3}, {"ticker": "KEY", "name": "KeyCorp", "period": "Q3 2026 (Jul 1 to Sep 30, 2026)", "release": "2026-10-20", "rev_q": 2044, "rev_ya": 1886, "rev_basis": "GAAP", "eps_q": 0.51, "eps_ya": 0.41, "nim": 2.95, "nim_basis": "TE", "eff": 60.58, "eff_basis": "cash efficiency ratio (not the same definition)", "cet1": 11.1, "nco": 0.32, "beat": "EPS $0.51 beat Earnings Whispers $0.46; revenue beat $2.03B", "distortion": "none noted", "why": "Ohio-based commercial bank overlapping PNC's Midwest and corporate banking business", "src": ["https://www.sec.gov/Archives/edgar/data/0000091576/000009157626000020/a3q26earningsrelease.htm", "https://www.earningswhispers.com/epsdetails/KEY/202609"], "rev_yoy": 8.4, "eps_yoy": 24.4}]}, "peers": [{"t": "PNC", "rev": 10.9, "eps": 14.3, "nim": 2.94, "eff": 57, "cet1": 9.8, "nco": 0.28}, {"t": "USB", "rev": 8.7, "eps": 9.8, "nim": 2.84, "eff": 55.9, "cet1": 10.8, "nco": 0.51}, {"t": "TFC", "rev": -27.7, "eps": -46.2, "nim": 3.0, "eff": 82.9, "cet1": 10.7, "nco": 0.77}, {"t": "FITB", "rev": 42.5, "eps": -1.1, "nim": 3.34, "eff": 62.4, "cet1": 10.02, "nco": 0.31}, {"t": "CFG", "rev": 9.6, "eps": 34.3, "nim": 3.19, "eff": 60.0, "cet1": 10.5, "nco": 0.37}, {"t": "KEY", "rev": 8.4, "eps": 24.4, "nim": 2.95, "eff": 60.58, "cet1": 11.1, "nco": 0.32}], "guide_q4": {"Average loans": 2.5, "Net interest income": 4.0, "Fee income": 3.5, "Adjusted noninterest expense": 5.0}};
+const $ = s => document.querySelector(s);
+const NS = "http://www.w3.org/2000/svg";
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+function el(tag, attrs, parent){ const e=document.createElementNS(NS,tag); for(const k in attrs) e.setAttribute(k,attrs[k]); if(parent) parent.appendChild(e); return e; }
+function txt(p,x,y,s,a={}){ const t=el("text",Object.assign({x,y},a),p); t.textContent=s; return t; }
+function svgIn(id,h){ const box=document.getElementById(id); box.innerHTML=""; const w=Math.max(260,box.clientWidth); const s=el("svg",{viewBox:`0 0 ${w} ${h}`,width:w,height:h},box); return [s,w]; }
+const tip=$("#tip");
+function tipOn(node,html){ node.style.cursor="default";
+  const show=e=>{tip.innerHTML=html; tip.style.opacity=1; const x=Math.min(e.clientX+12, innerWidth-tip.offsetWidth-8); tip.style.left=x+"px"; tip.style.top=(e.clientY+14)+"px";};
+  node.addEventListener("pointermove",show); node.addEventListener("pointerleave",()=>tip.style.opacity=0); }
+const fmt=(v,d=1)=>v.toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});
+const sgn=v=>(v>0?"+":"")+fmt(v);
+const M=D.m, H=D.hist;
+
+$("#lede").textContent = "Adjusted EPS of $5.09 cleared every estimate we found ($4.91 to $4.98), and net interest income rose 15.3% from a year ago on loan growth and the FirstBank deal. Revenue still came in about 0.7% light, NIM was 6 bp under the estimate, and CET1 slipped to an estimated 9.8%, the lowest of six peers. The open question is whether PNC can grow NII about 4% next quarter while rebuilding capital toward its 10% target.";
+
+// KPI tiles
+const kpis=[
+ ["Adjusted EPS","$5.09",`<span class="pos">▲ +2.2% to +3.7% vs. est.</span><br><span class="mut">GAAP $4.97, ${sgn(M.eps_dil.yoy)}% YoY</span>`],
+ ["Revenue","$6.56B",`<span class="neg">▼ −0.7% vs. est.</span><br><span class="mut">${sgn(M.revenue.yoy)}% YoY</span>`],
+ ["Net interest income","$4.21B",`<span class="pos">▲ ${sgn(M.nii.yoy)}% YoY</span><br><span class="mut">−1.0% vs. est.</span>`],
+ ["Net interest margin","2.94%",`<span class="pos">▲ +15 bp YoY</span><br><span class="mut">Est. 3.0%</span>`],
+ ["Efficiency ratio","57%",`<span class="pos">▼ −2 pts YoY (better)</span><br><span class="mut">Est. 56.9%</span>`],
+ ["CET1 ratio (est.)","9.8%",`<span class="neg">▼ −0.9 pts YoY</span><br><span class="mut">Well-capitalized min. 6.5%</span>`]];
+$("#kpis").innerHTML=kpis.map(k=>`<div class="kpi"><div class="l">${k[0]}</div><div class="v">${k[1]}</div><div class="d">${k[2]}</div></div>`).join("");
+
+function bullets(){
+  const rows=[
+    {n:"Adjusted EPS",a:5.09,e:[["Zacks",4.97],["S&P/Visible Alpha",4.98],["MarketBeat",4.91]],lo:4.6,hi:5.2,f:v=>"$"+v.toFixed(2)},
+    {n:"Revenue ($B)",a:6.562,e:[["Zacks",6.60],["S&P/Visible Alpha",6.61]],lo:6.2,hi:6.7,f:v=>"$"+v.toFixed(2)+"B"},
+    {n:"NIM (%)",a:2.94,e:[["Zacks avg",3.0]],lo:2.6,hi:3.1,f:v=>v.toFixed(2)+"%"}];
+  const rh=64,[s,w]=svgIn("c-bullets",rows.length*rh+8); const L=8,R=w-8;
+  rows.forEach((r,i)=>{ const y=i*rh; const x=v=>L+(v-r.lo)/(r.hi-r.lo)*(R-L);
+    txt(s,L,y+16,r.n,{class:"lbl"}); txt(s,R,y+16,"Actual "+r.f(r.a),{"text-anchor":"end",class:"fgtxt"});
+    el("rect",{x:L,y:y+26,width:R-L,height:22,rx:3,fill:css("--band")},s);
+    const b=el("rect",{x:L,y:y+31,width:x(r.a)-L,height:12,rx:3,fill:css("--accent")},s);
+    tipOn(b,`${r.n}: actual ${r.f(r.a)}`);
+    r.e.forEach(([p,v])=>{ const t=el("rect",{x:x(v)-1,y:y+24,width:2,height:26,fill:css("--fg")},s); const hit=el("rect",{x:x(v)-7,y:y+22,width:14,height:30,fill:"transparent"},s); tipOn(hit,`${p} estimate: ${r.f(v)}<br>Actual vs. est.: ${sgn((r.a/v-1)*100)}%`);});
+    txt(s,L,y+62,r.f(r.lo)); txt(s,R,y+62,r.f(r.hi),{"text-anchor":"end"});
+  });
+}
+
+function trends(){
+  const box=$("#c-trends"); box.innerHTML="";
+  const P=[["Net interest income ($B)","nii",v=>"$"+(v/1000).toFixed(2)+"B","rose 23% over two years"],
+           ["Net interest margin (%)","nim_pct",v=>v.toFixed(2)+"%","up 30 bp since Q3 2024"],
+           ["Efficiency ratio (%, lower is better)","eff_pct",v=>v+"%","best in nine quarters"],
+           ["Net charge-off ratio (%)","nco_pct",v=>v.toFixed(2)+"%","up from 2025 lows"],
+           ["Rate paid on interest-bearing deposits (%)","ib_dep_rate",v=>v.toFixed(2)+"%","down 74 bp in two years"],
+           ["Diluted EPS, GAAP ($)","eps_dil",v=>"$"+v.toFixed(2),"up 14.3% YoY"]];
+  P.forEach((p,i)=>{ const pn=document.createElement("div"); pn.className="panel";
+    pn.innerHTML=`<h3>${p[0]}</h3><div class="meta">${p[3]}</div><div class="chart" id="tr${i}"></div>`; box.appendChild(pn);
+    const vals=H[p[1]]; const [s,w]=svgIn("tr"+i,150);
+    const lo=Math.min(...vals),hi=Math.max(...vals),pad=(hi-lo)*0.15||1;
+    const L=4,R=w-56,T=12,B=118; const x=k=>L+k*(R-L)/(vals.length-1), y=v=>B-(v-(lo-pad))/((hi+pad)-(lo-pad))*(B-T);
+    [lo,hi].forEach(v=>{el("line",{x1:L,x2:R,y1:y(v),y2:y(v),stroke:css("--grid"),"stroke-width":1},s);});
+    el("path",{d:vals.map((v,k)=>(k?"L":"M")+x(k)+","+y(v)).join(""),fill:"none",stroke:css("--accent"),"stroke-width":2,"stroke-linejoin":"round"},s);
+    vals.forEach((v,k)=>{ const last=k===vals.length-1; el("circle",{cx:x(k),cy:y(v),r:last?5:3,fill:last?css("--accent"):css("--surface"),stroke:css("--accent"),"stroke-width":2},s);
+      const hit=el("rect",{x:x(k)-(R-L)/16,y:T-8,width:(R-L)/8,height:B-T+16,fill:"transparent"},s); tipOn(hit,`${D.Q[k]}: ${p[2](v)}${(p[1]==="nim_pct"&&k<4)?"<br>Rebuilt from spread + free-funds benefit":""}`);});
+    txt(s,R+8,y(vals[8])+5,p[2](vals[8]),{class:"fgtxt"});
+    txt(s,L,142,D.Q[0]); txt(s,R,142,D.Q[8],{"text-anchor":"end"});
+  });
+}
+
+function contrib(){
+  const r=M.rev_bridge, rows=[["Net interest income",r.nii],["Noninterest income",r.nonii],["Total revenue change",r.total]];
+  const [s,w]=svgIn("c-contrib",rows.length*44); const L=8,R=w-70, x=v=>L+v/r.total*(R-L);
+  rows.forEach(([n,v],i)=>{ const y=i*44; txt(s,L,y+14,n,{class:"lbl"});
+    const b=el("rect",{x:L,y:y+20,width:Math.max(2,x(v)-L),height:14,rx:3,fill:i===2?css("--fg"):css("--accent")},s);
+    tipOn(b,`${n}: +$${v}M (${Math.round(v/r.total*100)}% of the change)`);
+    txt(s,x(v)+8,y+32,"+$"+v+"M",{class:"fgtxt"}); });
+}
+
+function peers(){
+  const box=$("#c-peers"); box.innerHTML="";
+  const mets=[["cet1","CET1 ratio (%)","high",v=>v.toFixed(1)+"%"],["eff","Efficiency ratio (%, lower is better)","low",v=>v.toFixed(1)+"%"],
+    ["nco","Net charge-off ratio (%, lower is better)","low",v=>v.toFixed(2)+"%"],["nim","Net interest margin (%)","high",v=>v.toFixed(2)+"%"],
+    ["eps","GAAP diluted EPS growth YoY (%)","high",v=>sgn(v)+"%"],["rev","Revenue growth YoY (%)","high",v=>sgn(v)+"%"]];
+  const pp=M.peer_position, key={cet1:"cet1",eff:"eff",nco:"nco",nim:"nim",eps:"eps_yoy",rev:"rev_yoy"};
+  // sort: worst relative position first (rank, then gap size relative to median)
+  mets.sort((a,b)=>(pp[key[b[0]]].rank-pp[key[a[0]]].rank));
+  mets.forEach((mt,i)=>{ const q=pp[key[mt[0]]]; const pn=document.createElement("div"); pn.className="panel";
+    pn.innerHTML=`<h3>${mt[1]}</h3><div class="meta">PNC ranks #${q.rank} of ${q.of}; peer median ${mt[3](q.peer_median)}</div><div class="chart" id="pr${i}"></div>`; box.appendChild(pn);
+    const rows=D.peers.slice().sort((a,b)=>mt[2]==="high"?b[mt[0]]-a[mt[0]]:a[mt[0]]-b[mt[0]]);
+    const vals=rows.map(r=>r[mt[0]]); let lo=Math.min(...vals,0>Math.min(...vals)?Math.min(...vals):Infinity), hi=Math.max(...vals);
+    lo=Math.min(...vals); const pad=(hi-lo)*0.08; lo-=pad; hi+=pad;
+    const rh=24,[s,w]=svgIn("pr"+i,rows.length*rh+10); const L=48,R=w-62, x=v=>L+(v-lo)/(hi-lo)*(R-L);
+    if(lo<0&&hi>0) el("line",{x1:x(0),x2:x(0),y1:0,y2:rows.length*rh,stroke:css("--rule"),"stroke-width":1},s);
+    el("line",{x1:x(q.peer_median),x2:x(q.peer_median),y1:0,y2:rows.length*rh,stroke:css("--muted"),"stroke-width":1,"stroke-dasharray":"3 3"},s);
+    rows.forEach((r,k)=>{ const y=k*rh+rh/2+2, me=r.t==="PNC";
+      txt(s,0,y+5,r.t,{class:me?"fgtxt":""});
+      el("line",{x1:L,x2:R,y1:y,y2:y,stroke:css("--grid"),"stroke-width":1},s);
+      const c=el("circle",{cx:x(r[mt[0]]),cy:y,r:me?7:5,fill:me?css("--accent"):css("--peer"),stroke:css("--surface"),"stroke-width":2},s);
+      const hit=el("rect",{x:0,y:y-rh/2,width:w,height:rh,fill:"transparent"},s); tipOn(hit,`${r.t}: ${mt[3](r[mt[0]])}`);
+      txt(s,w,y+5,mt[3](r[mt[0]]),{"text-anchor":"end",class:me?"fgtxt":""}); });
+  });
+  const names={PNC:"PNC Financial",USB:"U.S. Bancorp",TFC:"Truist",FITB:"Fifth Third",CFG:"Citizens",KEY:"KeyCorp"};
+  $("#t-peers").innerHTML=`<thead><tr><th>Bank</th><th>Period</th><th>Rev. YoY</th><th>EPS YoY</th><th>NIM</th><th>Eff.</th><th>CET1</th><th>NCO</th></tr></thead><tbody>`+
+    D.peers.map(r=>`<tr class="${r.t==="PNC"?"me":""}"><td>${names[r.t]} (${r.t})</td><td>Q3 2026</td><td>${sgn(r.rev)}%</td><td>${sgn(r.eps)}%</td><td>${r.nim.toFixed(2)}%</td><td>${r.eff.toFixed(1)}%</td><td>${r.cet1.toFixed(1)}%</td><td>${r.nco.toFixed(2)}%</td></tr>`).join("")+"</tbody>";
+  $("#peerwhy").innerHTML=[
+   ["U.S. Bancorp","largest super-regional; overlaps in commercial banking, payments and treasury management"],
+   ["Truist","competes head-on in PNC's Southeast expansion markets"],
+   ["Fifth Third","Midwest overlap with PNC's legacy footprint"],
+   ["Citizens","Northeast and Mid-Atlantic commercial and consumer competitor"],
+   ["KeyCorp","Ohio-based commercial bank overlapping PNC's Midwest corporate banking"]].map(p=>`<li><strong>${p[0]}:</strong> ${p[1]}.</li>`).join("");
+}
+
+function guide(){
+  const g=Object.entries(D.guide_q4); const [s,w]=svgIn("c-guide",g.length*44); const L=8,R=w-60, x=v=>L+v/6*(R-L);
+  g.forEach(([n,v],i)=>{ const y=i*44; txt(s,L,y+14,n+" (Q4 vs. Q3)",{class:"lbl"});
+    const exp=n.includes("expense");
+    const b=el("rect",{x:L,y:y+20,width:x(v)-L,height:14,rx:3,fill:exp?css("--peer"):css("--accent")},s);
+    tipOn(b,`${n}: up about ${v}% in Q4 vs. Q3 (management outlook, Oct 15)`); txt(s,x(v)+8,y+32,"≈ +"+v+"%",{class:"fgtxt"}); });
+}
+
+function bridge(){
+  const p=M.pretax; const steps=[["Q3 2025",p.ya,"tot"],["NII",p.d_nii],["Fees & other",p.d_nonii],["Provision",p.d_prov],["Expense",p.d_exp],["Q3 2026",p.cur,"tot"]];
+  const [s,w]=svgIn("c-bridge",240); const L=4,R=w-4,T=24,B=196, n=steps.length, cw=(R-L)/n, bw=Math.min(56,cw*0.62);
+  const lo=1800, hi=3000, y=v=>B-(v-lo)/(hi-lo)*(B-T);
+  let run=0;
+  steps.forEach(([lab,v,t],i)=>{ const cx=L+cw*i+cw/2; let y1,y2,col;
+    if(t){ y1=y(v); y2=B; col=i?css("--accent"):css("--peer"); run=v; }
+    else { const a=run,b=run+v; y1=y(Math.max(a,b)); y2=y(Math.min(a,b)); col=v>=0?css("--pos"):css("--neg"); run=b; }
+    const r=el("rect",{x:cx-bw/2,y:y1,width:bw,height:Math.max(2,y2-y1),rx:3,fill:col},s);
+    tipOn(r,t?`${lab} pretax income: $${v.toLocaleString()}M`:`${lab}: ${v>=0?"+":"−"}$${Math.abs(v)}M`);
+    txt(s,cx,y1-6,t?"$"+(v/1000).toFixed(2)+"B":(v>=0?"+":"−")+Math.abs(v),{"text-anchor":"middle",class:"fgtxt"});
+    txt(s,cx,B+18,lab,{"text-anchor":"middle"});
+    if(i<n-1){ el("line",{x1:cx+bw/2,x2:cx+cw-bw/2,y1:y(run),y2:y(run),stroke:css("--muted"),"stroke-width":1,"stroke-dasharray":"2 2"},s); }
+  });
+  txt(s,L,236,"$M, axis starts at $1.8B",{});
+}
+
+function adj(){
+  const rows=[["GAAP diluted EPS",4.97,0],["Integration and Visa items",0.12,4.97],["Adjusted EPS",5.09,0]];
+  const [s,w]=svgIn("c-adj",rows.length*44); const L=8,R=w-64,lo=4.5,hi=5.2, x=v=>L+(v-lo)/(hi-lo)*(R-L);
+  rows.forEach(([n,v,base],i)=>{ const y=i*44; txt(s,L,y+14,n,{class:"lbl"});
+    const x0=base?x(base):L, x1=base?x(base+v):x(v);
+    const b=el("rect",{x:x0,y:y+20,width:x1-x0,height:14,rx:3,fill:i===1?css("--pos"):(i===2?css("--accent"):css("--peer"))},s);
+    tipOn(b,`${n}: ${i===1?"+":""}$${v.toFixed(2)}`); txt(s,x1+8,y+32,(i===1?"+":"")+"$"+v.toFixed(2),{class:"fgtxt"}); });
+}
+
+function cet1(){
+  const [s,w]=svgIn("c-cet1",92); const L=8,R=w-8, lo=0,hi=12, x=v=>L+(v-lo)/(hi-lo)*(R-L);
+  el("rect",{x:L,y:28,width:R-L,height:22,rx:3,fill:css("--band")},s);
+  const b=el("rect",{x:L,y:33,width:x(9.8)-L,height:12,rx:3,fill:css("--accent")},s); tipOn(b,"CET1 9.8% (estimated, Sep 30, 2026)");
+  [[6.5,"6.5% min."],[10,"10% target"],[10.7,"peer median 10.7%"]].forEach(([v,l],k)=>{ el("rect",{x:x(v)-1,y:24,width:2,height:30,fill:k? css("--muted"):css("--neg")},s);
+    const hit=el("rect",{x:x(v)-7,y:20,width:14,height:38,fill:"transparent"},s); tipOn(hit,l);});
+  txt(s,x(6.5),16,"6.5% well-capitalized",{"text-anchor":"middle"});
+  txt(s,x(9.8),74,"PNC 9.8%",{"text-anchor":"middle",class:"fgtxt"});
+  txt(s,R,16,"10% target · 10.7% peers",{"text-anchor":"end"});
+  txt(s,L,88,"0%"); txt(s,R,88,"12%",{"text-anchor":"end"});
+}
+
+function segs(){
+  const rows=Object.entries(D.seg);
+  $("#t-seg").innerHTML=`<caption class="meta" style="caption-side:top;text-align:left;padding:.5rem .625rem">Segment net income, $M (prior periods restated for Q2 2026 funds-transfer pricing change)</caption><thead><tr><th>Segment</th><th>Q3 26</th><th>Q2 26</th><th>Q3 25</th><th>YoY</th></tr></thead><tbody>`+
+   rows.map(([n,v])=>`<tr><td>${n}</td><td>${v[0].toLocaleString()}</td><td>${v[1].toLocaleString()}</td><td>${v[2].toLocaleString()}</td><td>${v[2]>0?sgn((v[0]/v[2]-1)*100)+"%":"n/m"}</td></tr>`).join("")+"</tbody>";
+}
+
+$("#srcs").innerHTML=[
+ ["PNC Q3 2026 earnings release (8-K Ex 99.1)","https://www.sec.gov/Archives/edgar/data/713676/000162828026065936/q32026financialhighlightsa.htm"],
+ ["PNC Q3 2026 financial supplement (Ex 99.2)","https://www.sec.gov/Archives/edgar/data/713676/000162828026065936/q32026financialsupplement.htm"],
+ ["PNC Q3 2025 financial supplement","https://www.sec.gov/Archives/edgar/data/713676/000071367625000126/q32025financialsupplement.htm"],
+ ["PNC Q3 2026 earnings slides","https://www.sec.gov/Archives/edgar/data/713676/000162828026065997/a3q26earningsslides_vfx2.htm"],
+ ["Q3 2026 call transcript (TradingKey)","https://www.tradingkey.com/news/transcripts/262219389-tradingkey"],
+ ["Zacks consensus, Oct 15, 2026 (Yahoo Finance)","https://finance.yahoo.com/markets/stocks/articles/pnc-financial-services-group-pnc-123006124.html"],
+ ["StockStory, Oct 15, 2026","https://stockstory.org/us/stocks/nyse/pnc/news/earnings/pnc-financial-services-group-nysepnc-reports-sales-below-analyst-estimates-in-q3-2026-earnings"],
+ ["MarketBeat earnings report","https://www.marketbeat.com/earnings/reports/2026-10-15-the-pnc-financial-services-group-inc-stock/"],
+ ["AAII, Q4 2026 consensus","https://www.aaii.com/investingideas/article/514996-what-you-need-to-know-about-the-pnc-financial-services-group-incs-q3-earnings"],
+ ["U.S. Bancorp Q3 2026 release","https://www.usbank.com/about-us-bank/news-and-stories/article-library/us-bancorp-reports-third-quarter-2026-results.html"],
+ ["Truist Q3 2026 release (8-K)","https://www.sec.gov/Archives/edgar/data/0000092230/000009223026000108/ex991-3q26.htm"],
+ ["Fifth Third Q3 2026 release","https://finviz.com/news/403792/fifth-third-bancorp-reports-third-quarter-2026-earnings"],
+ ["Citizens Q3 2026 release (8-K)","https://www.sec.gov/Archives/edgar/data/0000759944/000075994426000206/a3q26earningsrelease.htm"],
+ ["KeyCorp Q3 2026 release (8-K)","https://www.sec.gov/Archives/edgar/data/0000091576/000009157626000020/a3q26earningsrelease.htm"]
+].map(([n,u])=>`<li><a href="${u}" target="_blank" rel="noopener">${n}</a></li>`).join("");
+
+function drawAll(){ bullets(); trends(); contrib(); peers(); guide(); bridge(); adj(); cet1(); segs(); }
+drawAll();
+let rz; addEventListener("resize",()=>{clearTimeout(rz); rz=setTimeout(drawAll,120);});
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",drawAll);
+$("#themeBtn").addEventListener("click",()=>{ const r=document.documentElement; const dark=r.dataset.theme? r.dataset.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches; r.dataset.theme=dark?"light":"dark"; try{localStorage.setItem("theme",r.dataset.theme)}catch(e){} drawAll(); });
+try{ const t=localStorage.getItem("theme"); if(t){document.documentElement.dataset.theme=t; drawAll();} }catch(e){}
+</script>
+
+</body></html>
