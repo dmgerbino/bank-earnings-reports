@@ -18,6 +18,11 @@ Replace only the Method and sources section of a bank already on the site:
 Rebuild every bank page and the home page from what is already in the repo:
   python3 scripts/publish.py build
 
+Every page also gets Open Graph and Twitter tags pointing at a 1200x630 share card:
+og.png at the root for the home page, <slug>/og.png for each bank. `add` writes the bank's
+card figures to <slug>/og.json and renders the card with scripts/og.py (needs cairosvg and
+the Inter font); its price line comes from data/prices/<TICKER>.csv.
+
 Every page's Method and sources section is rendered from templates/method-and-sources.html,
 so all banks share PNC's layout: one method paragraph, a bulleted list of named source links,
 then "Not investment advice." on its own line.
@@ -28,6 +33,9 @@ from datetime import date
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MANIFEST = os.path.join(ROOT, "reports.json")
 SITE_TITLE = "Bank Earnings Reports"
+SITE_URL = "https://dmgerbino.github.io/bank-earnings-reports/"
+SITE_DESC = "Quarterly earnings from U.S. banks, each with a report, an infographic and a short narrated video."
+OG_MARK = ("<!-- pub:og -->", "<!-- /pub:og -->")
 MEDIA_EXT = (".mp4", ".srt", ".png", ".svg", ".jpg", ".webp")
 MAX_BYTES = 50 * 1024 * 1024
 METHOD_TEMPLATE = os.path.join(ROOT, "templates", "method-and-sources.html")
@@ -165,6 +173,10 @@ def build_page(slug, row):
         src = ('<!doctype html><html lang="en"><head><meta charset="utf-8">'
                '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body>\n'
                + src + "\n</body></html>\n")
+    tags = bank_og(slug, row)
+    if tags:
+        h = re.search(r"</head>", src, re.I)
+        src = src[:h.start()] + tags + "\n" + src[h.start():]
     nav = PUB_CSS + '<nav class="pub-nav"><a href="../">← All bank earnings reports</a></nav>'
     m = re.search(r"<body[^>]*>", src, re.I)
     src = src[:m.end()] + "\n" + nav + "\n" + src[m.end():]
@@ -179,6 +191,47 @@ def build_page(slug, row):
             end = h + len("</header>")
         src = src[:end] + "\n" + block + src[end:]
     open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(src)
+
+
+def og_tags(title, desc, url, image, alt, kind="article"):
+    """Open Graph and Twitter card tags. url and image must be absolute."""
+    e = lambda x: html.escape(x, quote=True)
+    tags = [
+        ("property", "og:type", kind), ("property", "og:site_name", SITE_TITLE),
+        ("property", "og:title", title), ("property", "og:description", desc),
+        ("property", "og:url", url), ("property", "og:image", image),
+        ("property", "og:image:width", "1200"), ("property", "og:image:height", "630"),
+        ("property", "og:image:alt", alt),
+        ("name", "twitter:card", "summary_large_image"), ("name", "twitter:title", title),
+        ("name", "twitter:description", desc), ("name", "twitter:image", image),
+        ("name", "twitter:image:alt", alt),
+    ]
+    return (OG_MARK[0] + "\n" + "\n".join(f'<meta {k}="{n}" content="{e(v)}">' for k, n, v in tags)
+            + "\n" + OG_MARK[1])
+
+
+def bank_og(slug, row):
+    """Tags for one bank page, or "" when it has no share card yet."""
+    if not os.path.exists(os.path.join(ROOT, slug, "og.png")):
+        print(f"Warning: {slug}/og.png missing, so the page has no share tags. "
+              f"Run: python3 scripts/og.py {slug}", file=sys.stderr)
+        return ""
+    v = row.get("updated") or row.get("added") or row["released"]
+    title = f'{row["bank"]} ({row["ticker"]}) {row["quarter"]} earnings'
+    return og_tags(title, row["headline"], f"{SITE_URL}{slug}/", f"{SITE_URL}{slug}/og.png?v={v}",
+                   f'{row["bank"]} {row["quarter"]} earnings card: price chart, net income and EPS')
+
+
+def render_cards(rows, slugs=(), force=False):
+    """Render missing share cards (or the named ones). Needs cairosvg."""
+    sys.path.insert(0, os.path.join(ROOT, "scripts"))
+    import og
+    if force or not os.path.exists(os.path.join(ROOT, "og.png")):
+        og.brand_png()
+    for r in rows:
+        png = os.path.join(ROOT, r["slug"], "og.png")
+        if (force or r["slug"] in slugs or not os.path.exists(png)) and og.load_spec(r["slug"]):
+            og.bank_png(r)
 
 
 def fmt_date(s):
@@ -203,7 +256,8 @@ def build_index(rows):
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{SITE_TITLE}</title>
-<meta name="description" content="Quarterly earnings from U.S. banks, each with a report, an infographic and a short narrated video.">
+<meta name="description" content="{SITE_DESC}">
+{og_tags(SITE_TITLE, SITE_DESC, SITE_URL, SITE_URL + "og.png", "Bank Earnings Reports by @dmgerbino", "website")}
 <style>
 :root{{--bg:#F6F7F9;--surface:#FFFFFF;--fg:#11161C;--muted:#56606C;--rule:#D9DEE4;--accent:#2A6DB0;color-scheme:light}}
 @media (prefers-color-scheme:dark){{:root:not([data-theme="light"]){{--bg:#000000;--surface:#0D0F12;--fg:#F0EDEA;--muted:#A39F99;--rule:#25292E;--accent:#5B9BD5;color-scheme:dark}}}}
@@ -265,17 +319,60 @@ def cmd_add(a):
         set_method(a.slug, a.method, a.source)
     elif METHOD_MARK[0] not in open(os.path.join(d, "report.html"), encoding="utf-8").read():
         sys.exit("Give --method and --source so the page uses the Method and sources template.")
+    set_og_spec(a)
+    today = date.today().isoformat()
     row = {"slug": a.slug, "bank": a.bank, "ticker": a.ticker, "quarter": a.quarter,
-           "released": a.released, "headline": a.headline, "added": date.today().isoformat()}
+           "released": a.released, "headline": a.headline, "added": today}
+    old = next((r for r in rows if r["slug"] == a.slug), None)
+    if old:  # a redone report keeps its first-published date
+        row["added"] = old.get("added", today)
+        if row["added"] != today:
+            row["updated"] = today
     rows = [r for r in rows if r["slug"] != a.slug] + [row]
     save(rows)
+    render_cards(rows, slugs=[a.slug])
     cmd_build(None)
+
+
+def set_og_spec(a):
+    """Write <slug>/og.json from the --exchange/--net-income/--eps flags and place the prices."""
+    path = os.path.join(ROOT, a.slug, "og.json")
+    spec = json.load(open(path)) if os.path.exists(path) else {}
+    for k in ("exchange", "net_income_label", "net_income", "net_income_note", "eps_label", "eps", "eps_note"):
+        v = getattr(a, k)
+        if v is not None:
+            spec[k] = v
+    if a.no_eps:
+        for k in ("eps_label", "eps", "eps_note"):
+            spec.pop(k, None)
+    missing = [k for k in ("exchange", "net_income", "net_income_note") if not spec.get(k)]
+    if missing:
+        sys.exit("The share card needs --" + ", --".join(m.replace("_", "-") for m in missing)
+                 + " (see README, Share cards).")
+    if spec.get("eps") and not spec.get("eps_note"):
+        sys.exit("--eps needs --eps-note naming the consensus it beat or missed.")
+    prices = os.path.join(ROOT, "data", "prices", f"{a.ticker.upper()}.csv")
+    if a.prices:
+        os.makedirs(os.path.dirname(prices), exist_ok=True)
+        if os.path.abspath(a.prices) != prices:
+            shutil.copyfile(a.prices, prices)
+    elif not os.path.exists(prices):
+        sys.exit(f"Give --prices path/to/{a.ticker.upper()}.csv (date,close for the 90 days to release).")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(spec, f, indent=2, ensure_ascii=False)
+        f.write("\n")
 
 
 def cmd_method(a):
     if not os.path.exists(os.path.join(ROOT, a.slug, "report.html")):
         sys.exit(f"No {a.slug}/report.html in the repo.")
     set_method(a.slug, a.method, a.source)
+    cmd_build(None)
+
+
+def cmd_og(a):
+    rows = load()
+    render_cards(rows, slugs=a.slug, force=not a.slug)
     cmd_build(None)
 
 
@@ -297,6 +394,17 @@ if __name__ == "__main__":
     p.add_argument("--media", action="append")
     p.add_argument("--method", help="Method paragraph for the Method and sources section")
     p.add_argument("--source", action="append", help='"Label|URL", repeat for each source')
+    # Share card (scripts/og.py). Required for a new bank; kept from og.json on a redo.
+    p.add_argument("--exchange", help='Listing exchange as the release writes it: "NYSE", "Nasdaq", "NYSE American"')
+    p.add_argument("--net-income", dest="net_income", help='Card figure, e.g. "$2.10B" or "$392K"')
+    p.add_argument("--net-income-note", dest="net_income_note",
+                   help='Change vs year-ago quarter, e.g. "▲ 15.1% vs. Q3 2025" or "▲ from −$2.7M in Q3 2025"')
+    p.add_argument("--net-income-label", dest="net_income_label", help='Default "Net income"')
+    p.add_argument("--eps", help='Only when a real pre-release consensus exists, e.g. "$5.09"')
+    p.add_argument("--eps-label", dest="eps_label", help='e.g. "Adjusted EPS" or "Diluted EPS"')
+    p.add_argument("--eps-note", dest="eps_note", help='e.g. "Beat $4.97 consensus"')
+    p.add_argument("--no-eps", dest="no_eps", action="store_true", help="Drop the EPS line from the card")
+    p.add_argument("--prices", help="CSV of daily closes (date,close), copied to data/prices/<TICKER>.csv")
     p.set_defaults(fn=cmd_add)
     q = sp.add_parser("method")
     q.add_argument("--slug", required=True)
@@ -304,5 +412,8 @@ if __name__ == "__main__":
     q.add_argument("--source", action="append", required=True)
     q.set_defaults(fn=cmd_method)
     sp.add_parser("build").set_defaults(fn=cmd_build)
+    o = sp.add_parser("og", help="Re-render share cards: all, or --slug ones, then rebuild pages")
+    o.add_argument("--slug", action="append", default=[])
+    o.set_defaults(fn=cmd_og)
     a = ap.parse_args()
     a.fn(a)
