@@ -1,0 +1,29 @@
+<!-- pub:method -->
+<!--
+  Method and sources: the fixed layout every bank page uses (modelled on pnc-q3-2026).
+  Three parts, always in this order:
+    1. One prose paragraph: basis of the figures (GAAP or adjusted, units), any derived
+       quarters, how growth rates and ratios were computed, where consensus came from and
+       when, where peer data came from, any caveats, and "Data was read on <Mon D, YYYY>."
+    2. A bulleted list of every source, each a link with a plain-English name,
+       e.g. "PNC Q3 2026 earnings release (8-K Ex 99.1)" or "Zacks consensus, Oct 15, 2026 (Yahoo Finance)".
+    3. "Not investment advice." on its own line.
+  scripts/publish.py fills {{METHOD}} and {{SOURCES}} from --method and --source "Label|URL".
+  The styles are scoped to .ms so the section looks the same whatever the report's own CSS.
+-->
+<style>
+.ms p{font-family:var(--sans,"IBM Plex Sans",system-ui,-apple-system,sans-serif);font-size:.875rem;line-height:1.6;color:var(--fg,inherit);margin:.5rem 0;max-width:65ch}
+.ms ul{font-family:var(--sans,"IBM Plex Sans",system-ui,-apple-system,sans-serif);font-size:.875rem;line-height:1.6;list-style:disc;padding-left:1.1rem;margin:.5rem 0}
+.ms li{margin:.35rem 0;max-width:65ch}
+.ms a{color:var(--accent,var(--brand,#2A6DB0))}
+.ms p.ms-note{color:var(--muted,#5A626C)}
+</style>
+<section class="ms" aria-labelledby="h-method">
+<h2 id="h-method">Method and sources</h2>
+<p>{{METHOD}}</p>
+<ul>
+{{SOURCES}}
+</ul>
+<p class="ms-note">Not investment advice.</p>
+</section>
+<!-- /pub:method -->

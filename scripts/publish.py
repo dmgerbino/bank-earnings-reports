@@ -7,8 +7,20 @@ Add (or refresh) one bank:
       --bank "OptimumBank Holdings" --ticker OPHC --quarter "Q3 2026" \
       --released 2026-11-12 --headline "One-line headline"
 
+      --method "One paragraph: basis, adjustments, how ratios were computed, consensus and
+                peer sources, caveats. Data was read on Nov 13, 2026." \
+      --source "OptimumBank Q3 2026 earnings release (GlobeNewswire)|https://..." \
+      --source "Zacks earnings preview (TradingView)|https://..."
+
+Replace only the Method and sources section of a bank already on the site:
+  python3 scripts/publish.py method --slug ophc-q3-2026 --method "..." --source "Label|URL" ...
+
 Rebuild every bank page and the home page from what is already in the repo:
   python3 scripts/publish.py build
+
+Every page's Method and sources section is rendered from templates/method-and-sources.html,
+so all banks share PNC's layout: one method paragraph, a bulleted list of named source links,
+then "Not investment advice." on its own line.
 """
 import argparse, html, json, os, re, shutil, sys
 from datetime import date
@@ -18,6 +30,8 @@ MANIFEST = os.path.join(ROOT, "reports.json")
 SITE_TITLE = "Bank Earnings Reports"
 MEDIA_EXT = (".mp4", ".srt", ".png", ".svg", ".jpg", ".webp")
 MAX_BYTES = 50 * 1024 * 1024
+METHOD_TEMPLATE = os.path.join(ROOT, "templates", "method-and-sources.html")
+METHOD_MARK = ("<!-- pub:method -->", "<!-- /pub:method -->")
 
 
 def load():
@@ -90,9 +104,63 @@ PUB_CSS = """<style>
 </style>"""
 
 
+def render_method(method, sources):
+    """Fill the fixed Method and sources template. sources: list of "Label|URL" strings."""
+    if not method or not method.strip():
+        sys.exit("--method is required: one paragraph explaining the method, ending with the date the data was read.")
+    if not sources:
+        sys.exit("At least one --source \"Label|URL\" is required.")
+    items = []
+    for s in sources:
+        if "|" not in s:
+            sys.exit(f"--source must be \"Label|URL\", got: {s}")
+        label, url = (x.strip() for x in s.rsplit("|", 1))
+        if not label or not re.match(r"https?://", url):
+            sys.exit(f"--source needs a plain-English label and an http(s) URL, got: {s}")
+        items.append(f'<li><a href="{html.escape(url, quote=True)}" target="_blank" rel="noopener">'
+                     f'{html.escape(label, quote=False)}</a></li>')
+    t = open(METHOD_TEMPLATE, encoding="utf-8").read()
+    # Drop the explanatory comment, keep the pub:method markers.
+    t = re.sub(r"<!--(?! /?pub:method).*?-->\n?", "", t, flags=re.S)
+    text = " ".join(method.split())
+    text = re.sub(r"\s*Not investment advice\.?\s*$", "", text)
+    return (t.replace("{{METHOD}}", html.escape(text, quote=False))
+             .replace("{{SOURCES}}", "\n".join(items)).strip())
+
+
+def swap_method(src, block):
+    """Put block in place of the report's existing Method and sources section."""
+    a, b = METHOD_MARK
+    i = src.find(a)
+    if i >= 0:
+        j = src.find(b, i)
+        return src[:i] + block + src[j + len(b):]
+    m = re.search(r"<h2[^>]*>\s*Method (?:and|&amp;|&) sources\s*</h2>", src, re.I)
+    if not m:
+        sys.exit("No 'Method and sources' heading found in report.html to replace.")
+    start = m.start()
+    sec = re.search(r"<section[^>]*>\s*$", src[:start])
+    if sec:
+        start = sec.start()
+        end = src.find("</section>", m.end()) + len("</section>")
+    else:
+        ends = [k for k in (src.find(t, m.end()) for t in ("<h2", "</div>", "</main>", "<script", "</body>")) if k >= 0]
+        end = min(ends) if ends else len(src)
+    return src[:start] + block + "\n" + src[end:].lstrip("\n")
+
+
+def set_method(slug, method, sources):
+    path = os.path.join(ROOT, slug, "report.html")
+    src = open(path, encoding="utf-8").read()
+    open(path, "w", encoding="utf-8").write(swap_method(src, render_method(method, sources)))
+
+
 def build_page(slug, row):
     d = os.path.join(ROOT, slug)
     src = open(os.path.join(d, "report.html"), encoding="utf-8").read()
+    if METHOD_MARK[0] not in src:
+        print(f"Warning: {slug}/report.html does not use templates/method-and-sources.html; "
+              f"run: python3 scripts/publish.py method --slug {slug} --method ... --source ...", file=sys.stderr)
     if not re.match(r"\s*<!doctype", src, re.I):
         src = ('<!doctype html><html lang="en"><head><meta charset="utf-8">'
                '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body>\n'
@@ -193,10 +261,21 @@ def cmd_add(a):
             p = os.path.join(m, f)
             if os.path.isfile(p) and f.lower().endswith(MEDIA_EXT):
                 shutil.copyfile(p, os.path.join(d, f))
+    if a.method or a.source:
+        set_method(a.slug, a.method, a.source)
+    elif METHOD_MARK[0] not in open(os.path.join(d, "report.html"), encoding="utf-8").read():
+        sys.exit("Give --method and --source so the page uses the Method and sources template.")
     row = {"slug": a.slug, "bank": a.bank, "ticker": a.ticker, "quarter": a.quarter,
            "released": a.released, "headline": a.headline, "added": date.today().isoformat()}
     rows = [r for r in rows if r["slug"] != a.slug] + [row]
     save(rows)
+    cmd_build(None)
+
+
+def cmd_method(a):
+    if not os.path.exists(os.path.join(ROOT, a.slug, "report.html")):
+        sys.exit(f"No {a.slug}/report.html in the repo.")
+    set_method(a.slug, a.method, a.source)
     cmd_build(None)
 
 
@@ -216,7 +295,14 @@ if __name__ == "__main__":
     for k in ("slug", "report", "bank", "ticker", "quarter", "released", "headline"):
         p.add_argument("--" + k, required=True)
     p.add_argument("--media", action="append")
+    p.add_argument("--method", help="Method paragraph for the Method and sources section")
+    p.add_argument("--source", action="append", help='"Label|URL", repeat for each source')
     p.set_defaults(fn=cmd_add)
+    q = sp.add_parser("method")
+    q.add_argument("--slug", required=True)
+    q.add_argument("--method", required=True)
+    q.add_argument("--source", action="append", required=True)
+    q.set_defaults(fn=cmd_method)
     sp.add_parser("build").set_defaults(fn=cmd_build)
     a = ap.parse_args()
     a.fn(a)

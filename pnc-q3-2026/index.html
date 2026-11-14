@@ -177,12 +177,35 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   </ul>
 </section>
 
-<section aria-labelledby="h-method">
-  <h2 id="h-method">Method and sources</h2>
-  <p class="sans" style="font-size:var(--s-1)">PNC figures are GAAP from the Q3 2026 release and financial supplement unless labeled adjusted (PNC's "as adjusted" excludes integration costs and significant items). The nine-quarter history joins the Q3 2026 and Q3 2025 supplements. Growth rates, margins and ranks were recomputed from dollar amounts in a script. Consensus is pre-release, read from earnings-day coverage dated Oct 15, 2026. Peer data is each bank's Q3 2026 release, with Zacks or Earnings Whispers for consensus. Data was read on Nov 12, 2026.</p>
-  <ul class="tight sans" style="font-size:var(--s-1)" id="srcs"></ul>
-  <p class="meta">Not investment advice.</p>
+<!-- pub:method -->
+<style>
+.ms p{font-family:var(--sans,"IBM Plex Sans",system-ui,-apple-system,sans-serif);font-size:.875rem;line-height:1.6;color:var(--fg,inherit);margin:.5rem 0;max-width:65ch}
+.ms ul{font-family:var(--sans,"IBM Plex Sans",system-ui,-apple-system,sans-serif);font-size:.875rem;line-height:1.6;list-style:disc;padding-left:1.1rem;margin:.5rem 0}
+.ms li{margin:.35rem 0;max-width:65ch}
+.ms a{color:var(--accent,var(--brand,#2A6DB0))}
+.ms p.ms-note{color:var(--muted,#5A626C)}
+</style>
+<section class="ms" aria-labelledby="h-method">
+<h2 id="h-method">Method and sources</h2>
+<p>PNC figures are GAAP from the Q3 2026 release and financial supplement unless labeled adjusted (PNC's "as adjusted" excludes integration costs and significant items). The nine-quarter history joins the Q3 2026 and Q3 2025 supplements. Growth rates, margins and ranks were recomputed from dollar amounts in a script. Consensus is pre-release, read from earnings-day coverage dated Oct 15, 2026. Peer data is each bank's Q3 2026 release, with Zacks or Earnings Whispers for consensus. Data was read on Nov 12, 2026.</p>
+<ul>
+<li><a href="https://www.sec.gov/Archives/edgar/data/713676/000162828026065936/q32026financialhighlightsa.htm" target="_blank" rel="noopener">PNC Q3 2026 earnings release (8-K Ex 99.1)</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/713676/000162828026065936/q32026financialsupplement.htm" target="_blank" rel="noopener">PNC Q3 2026 financial supplement (Ex 99.2)</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/713676/000071367625000126/q32025financialsupplement.htm" target="_blank" rel="noopener">PNC Q3 2025 financial supplement</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/713676/000162828026065997/a3q26earningsslides_vfx2.htm" target="_blank" rel="noopener">PNC Q3 2026 earnings slides</a></li>
+<li><a href="https://www.tradingkey.com/news/transcripts/262219389-tradingkey" target="_blank" rel="noopener">Q3 2026 call transcript (TradingKey)</a></li>
+<li><a href="https://finance.yahoo.com/markets/stocks/articles/pnc-financial-services-group-pnc-123006124.html" target="_blank" rel="noopener">Zacks consensus, Oct 15, 2026 (Yahoo Finance)</a></li>
+<li><a href="https://stockstory.org/us/stocks/nyse/pnc/news/earnings/pnc-financial-services-group-nysepnc-reports-sales-below-analyst-estimates-in-q3-2026-earnings" target="_blank" rel="noopener">StockStory, Oct 15, 2026</a></li>
+<li><a href="https://www.marketbeat.com/earnings/reports/2026-10-15-the-pnc-financial-services-group-inc-stock/" target="_blank" rel="noopener">MarketBeat earnings report</a></li>
+<li><a href="https://www.aaii.com/investingideas/article/514996-what-you-need-to-know-about-the-pnc-financial-services-group-incs-q3-earnings" target="_blank" rel="noopener">AAII, Q4 2026 consensus</a></li>
+<li><a href="https://www.usbank.com/about-us-bank/news-and-stories/article-library/us-bancorp-reports-third-quarter-2026-results.html" target="_blank" rel="noopener">U.S. Bancorp Q3 2026 release</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/0000092230/000009223026000108/ex991-3q26.htm" target="_blank" rel="noopener">Truist Q3 2026 release (8-K)</a></li>
+<li><a href="https://finviz.com/news/403792/fifth-third-bancorp-reports-third-quarter-2026-earnings" target="_blank" rel="noopener">Fifth Third Q3 2026 release</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/0000759944/000075994426000206/a3q26earningsrelease.htm" target="_blank" rel="noopener">Citizens Q3 2026 release (8-K)</a></li>
+</ul>
+<p class="ms-note">Not investment advice.</p>
 </section>
+<!-- /pub:method -->
 </main>
 <div id="tip" role="status" aria-live="polite"></div>
 
@@ -346,23 +369,6 @@ function segs(){
   $("#t-seg").innerHTML=`<caption class="meta" style="caption-side:top;text-align:left;padding:.5rem .625rem">Segment net income, $M (prior periods restated for Q2 2026 funds-transfer pricing change)</caption><thead><tr><th>Segment</th><th>Q3 26</th><th>Q2 26</th><th>Q3 25</th><th>YoY</th></tr></thead><tbody>`+
    rows.map(([n,v])=>`<tr><td>${n}</td><td>${v[0].toLocaleString()}</td><td>${v[1].toLocaleString()}</td><td>${v[2].toLocaleString()}</td><td>${v[2]>0?sgn((v[0]/v[2]-1)*100)+"%":"n/m"}</td></tr>`).join("")+"</tbody>";
 }
-
-$("#srcs").innerHTML=[
- ["PNC Q3 2026 earnings release (8-K Ex 99.1)","https://www.sec.gov/Archives/edgar/data/713676/000162828026065936/q32026financialhighlightsa.htm"],
- ["PNC Q3 2026 financial supplement (Ex 99.2)","https://www.sec.gov/Archives/edgar/data/713676/000162828026065936/q32026financialsupplement.htm"],
- ["PNC Q3 2025 financial supplement","https://www.sec.gov/Archives/edgar/data/713676/000071367625000126/q32025financialsupplement.htm"],
- ["PNC Q3 2026 earnings slides","https://www.sec.gov/Archives/edgar/data/713676/000162828026065997/a3q26earningsslides_vfx2.htm"],
- ["Q3 2026 call transcript (TradingKey)","https://www.tradingkey.com/news/transcripts/262219389-tradingkey"],
- ["Zacks consensus, Oct 15, 2026 (Yahoo Finance)","https://finance.yahoo.com/markets/stocks/articles/pnc-financial-services-group-pnc-123006124.html"],
- ["StockStory, Oct 15, 2026","https://stockstory.org/us/stocks/nyse/pnc/news/earnings/pnc-financial-services-group-nysepnc-reports-sales-below-analyst-estimates-in-q3-2026-earnings"],
- ["MarketBeat earnings report","https://www.marketbeat.com/earnings/reports/2026-10-15-the-pnc-financial-services-group-inc-stock/"],
- ["AAII, Q4 2026 consensus","https://www.aaii.com/investingideas/article/514996-what-you-need-to-know-about-the-pnc-financial-services-group-incs-q3-earnings"],
- ["U.S. Bancorp Q3 2026 release","https://www.usbank.com/about-us-bank/news-and-stories/article-library/us-bancorp-reports-third-quarter-2026-results.html"],
- ["Truist Q3 2026 release (8-K)","https://www.sec.gov/Archives/edgar/data/0000092230/000009223026000108/ex991-3q26.htm"],
- ["Fifth Third Q3 2026 release","https://finviz.com/news/403792/fifth-third-bancorp-reports-third-quarter-2026-earnings"],
- ["Citizens Q3 2026 release (8-K)","https://www.sec.gov/Archives/edgar/data/0000759944/000075994426000206/a3q26earningsrelease.htm"],
- ["KeyCorp Q3 2026 release (8-K)","https://www.sec.gov/Archives/edgar/data/0000091576/000009157626000020/a3q26earningsrelease.htm"]
-].map(([n,u])=>`<li><a href="${u}" target="_blank" rel="noopener">${n}</a></li>`).join("");
 
 function drawAll(){ bullets(); trends(); contrib(); peers(); guide(); bridge(); adj(); cet1(); segs(); }
 drawAll();
