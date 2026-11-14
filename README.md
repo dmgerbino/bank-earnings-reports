@@ -64,7 +64,9 @@ Rules for the card's figures, all checked against the bank's own release:
 - `--eps`, `--eps-label`, `--eps-note`: only when a current pre-release consensus exists for the quarter, on the same basis (`Adjusted EPS` vs an adjusted consensus, `Diluted EPS` vs a GAAP one). Leave them out when there is none or it looks stale; `--no-eps` drops a line given earlier.
 - `--prices`: a CSV with header `date,close` covering at least the 90 calendar days to the release date. Shell downloads from most price sites are blocked here, so read the closes from Yahoo Finance's historical prices page (or another reliable public source), save them as the CSV, and add a row to `data/prices/SOURCES.md`.
 
-Rendering needs `cairosvg` (`python3 -m pip install cairosvg`) and the Inter font. `python3 scripts/publish.py og` re-renders every card and rebuilds the pages; `--slug <slug>` re-renders one. `build` renders any card that is missing. Social sites cache images, so the tags add `?v=<date>` to the image URL; it changes when a report is updated.
+Keep the bottom of every card empty. X lays the site domain over the bottom of a large-image card, so `SAFE_BOTTOM` in `scripts/og.py` (96 px of the 630) stays plain background: no text, no chart. The generator refuses to render a card that puts anything there. When you change the card layout, bump `CARD_VERSION` in `scripts/og.py`; it goes into the `?v=` on every `og:image`, so X and other sites fetch the new image instead of a cached one.
+
+Rendering needs `cairosvg` (`python3 -m pip install cairosvg`) and the Inter font. `python3 scripts/publish.py og` re-renders every card and rebuilds the pages; `--slug <slug>` re-renders one. `build` renders any card that is missing. Social sites cache images, so the tags add `?v=<date>` to the image URL; it changes when a report is updated or the card version changes.
 
 To fix only the Method and sources section of a bank already on the site: `python3 scripts/publish.py method --slug ophc-q3-2026 --method "..." --source "Label|URL" ...`, then commit and push.
 

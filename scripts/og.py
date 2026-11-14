@@ -29,6 +29,13 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PRICES = os.path.join(ROOT, "data", "prices")
 W, H = 1200, 630
 PAD = 64
+# X (Twitter) lays the site domain over the bottom of a summary_large_image card,
+# so the bottom SAFE_BOTTOM px stay plain background: no text, no chart.
+SAFE_BOTTOM = 96
+CONTENT_BOTTOM = H - SAFE_BOTTOM
+# Bump when the card layout changes, so the ?v= on og:image changes and social
+# sites fetch the new image instead of their cached copy.
+CARD_VERSION = "2"
 WINDOW_DAYS = 90
 
 # Site dark tokens (index.html), pure black per the branding guide.
@@ -50,9 +57,23 @@ def text(x, y, s, size, fill=FG, weight=400, anchor="start", ls=0):
 
 
 def svg_doc(body):
+    check_safe_band(body)
     return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" '
             f'viewBox="0 0 {W} {H}"><rect width="{W}" height="{H}" fill="{BG}"/>'
             f'{body}</svg>')
+
+
+def check_safe_band(body):
+    """Refuse any text baseline or chart point inside the bottom band X covers."""
+    import re
+    limit = CONTENT_BOTTOM - 12  # leave room for descenders
+    ys = [float(y) for y in re.findall(r'<text[^>]* y="([\d.]+)"', body)]
+    ys += [float(y) for y in re.findall(r'\by[12]?="([\d.]+)"', body)]
+    ys += [float(y) for y in re.findall(r'[ML]\s*[\d.]+,([\d.]+)', body)]
+    ys += [float(c) + float(r) for c, r in re.findall(r'cy="([\d.]+)" r="([\d.]+)"', body)]
+    bad = [y for y in ys if y > limit]
+    if bad:
+        raise ValueError(f"Card content at y={max(bad):.0f} enters the bottom {SAFE_BOTTOM}px kept clear for X.")
 
 
 def fmt_date(d):
@@ -74,15 +95,15 @@ def render(svg, png_path):
 # ---------------------------------------------------------------- brand card
 def brand_card():
     b = []
-    b.append(f'<rect x="{PAD}" y="{PAD}" width="8" height="250" rx="4" fill="{ACCENT}"/>')
-    b.append(text(PAD + 40, 150, "Bank Earnings", 104, weight=700, ls=-2))
-    b.append(text(PAD + 40, 262, "Reports", 104, weight=700, ls=-2))
-    b.append(text(PAD + 40, 350, "U.S. bank earnings, charted against", 40, MUTED))
-    b.append(text(PAD + 40, 400, "estimates and peers.", 40, MUTED))
-    b.append(text(PAD + 40, 468, "Report  ·  Infographic  ·  Narrated video", 30, FG, 500))
-    b.append(f'<line x1="{PAD}" y1="520" x2="{W-PAD}" y2="520" stroke="{RULE}" stroke-width="2"/>')
-    b.append(text(PAD, 578, "By @dmgerbino", 30, FG, 600))
-    b.append(text(W - PAD, 578, SITE, 30, ACCENT, 500, "end"))
+    b.append(f'<rect x="{PAD}" y="52" width="8" height="226" rx="4" fill="{ACCENT}"/>')
+    b.append(text(PAD + 40, 134, "Bank Earnings", 100, weight=700, ls=-2))
+    b.append(text(PAD + 40, 242, "Reports", 100, weight=700, ls=-2))
+    b.append(text(PAD + 40, 318, "U.S. bank earnings, charted against", 38, MUTED))
+    b.append(text(PAD + 40, 364, "estimates and peers.", 38, MUTED))
+    b.append(text(PAD + 40, 420, "Report  ·  Infographic  ·  Narrated video", 30, FG, 500))
+    b.append(f'<line x1="{PAD}" y1="448" x2="{W-PAD}" y2="448" stroke="{RULE}" stroke-width="2"/>')
+    b.append(text(PAD, 500, "By @dmgerbino", 30, FG, 600))
+    b.append(text(W - PAD, 500, SITE, 30, ACCENT, 500, "end"))
     return svg_doc("".join(b))
 
 
@@ -142,14 +163,14 @@ def bank_card(c, updated=None):
     """c: name, exchange, ticker, quarter, released (date), published (date), closes,
     net_income, net_income_note, [net_income_label], [eps, eps_note, eps_label]."""
     b = []
-    b.append(text(PAD, 92, c["name"], round(fit(c["name"], 56, W - 2 * PAD), 1), weight=700, ls=-1))
-    b.append(f'<text x="{PAD}" y="142" font-family="{FONT}" font-size="32">'
+    b.append(text(PAD, 84, c["name"], round(fit(c["name"], 56, W - 2 * PAD), 1), weight=700, ls=-1))
+    b.append(f'<text x="{PAD}" y="130" font-family="{FONT}" font-size="32">'
              f'<tspan fill="{ACCENT}" font-weight="600">{escape(c["exchange"])}: {escape(c["ticker"])}</tspan>'
              f'<tspan fill="{MUTED}" font-size="30"> · {escape(c["quarter"])} results, released '
              f'{escape(fmt_date(c["released"]))}</tspan></text>')
 
     # Sparkline, with its change label on the right.
-    sx0, sy0, sw, sh = PAD, 178, W - 2 * PAD - 210, 196
+    sx0, sy0, sw, sh = PAD, 162, W - 2 * PAD - 210, 182
     spark, chg, col = sparkline(c["closes"], sx0, sy0, sw, sh)
     b.append(spark)
     arrow = "▲" if chg >= 0 else "▼"
@@ -158,7 +179,7 @@ def bank_card(c, updated=None):
     b.append(text(W - PAD, sy0 + sh / 2 + 78, "release", 26, MUTED, 400, "end"))
 
     # Numbers: net income always, EPS vs consensus only when one exists.
-    ny = 452
+    ny = 396
     b.append(text(PAD, ny, c.get("net_income_label") or "Net income", 28, MUTED, 500))
     b.append(text(PAD, ny + 62, c["net_income"], 64, FG, 700, ls=-1))
     b.append(text(PAD, ny + 100, c["net_income_note"], 28, MUTED))
@@ -169,7 +190,7 @@ def bank_card(c, updated=None):
         b.append(text(ex, ny + 100, c.get("eps_note", ""), 28, MUTED))
 
     # Footer: dates and site.
-    fy = 598
+    fy = ny + 100  # level with the net income note line
     if updated:
         b.append(text(W - PAD, fy - 34, f"Updated {fmt_date(updated)}", 28, FG, 600, "end"))
         b.append(text(W - PAD, fy, f'First published {fmt_date(c["published"])}', 24, MUTED, 400, "end"))

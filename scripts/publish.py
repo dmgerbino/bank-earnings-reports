@@ -217,9 +217,16 @@ def bank_og(slug, row):
               f"Run: python3 scripts/og.py {slug}", file=sys.stderr)
         return ""
     v = row.get("updated") or row.get("added") or row["released"]
+    v = f"{v}-{card_version()}"
     title = f'{row["bank"]} ({row["ticker"]}) {row["quarter"]} earnings'
     return og_tags(title, row["headline"], f"{SITE_URL}{slug}/", f"{SITE_URL}{slug}/og.png?v={v}",
                    f'{row["bank"]} {row["quarter"]} earnings card: price chart, net income and EPS')
+
+
+def card_version():
+    """CARD_VERSION from scripts/og.py, read as text so pages build without cairosvg."""
+    m = re.search(r'^CARD_VERSION = "([^"]+)"', open(os.path.join(ROOT, "scripts", "og.py")).read(), re.M)
+    return m.group(1) if m else "1"
 
 
 def render_cards(rows, slugs=(), force=False):
@@ -257,7 +264,7 @@ def build_index(rows):
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{SITE_TITLE}</title>
 <meta name="description" content="{SITE_DESC}">
-{og_tags(SITE_TITLE, SITE_DESC, SITE_URL, SITE_URL + "og.png", "Bank Earnings Reports by @dmgerbino", "website")}
+{og_tags(SITE_TITLE, SITE_DESC, SITE_URL, SITE_URL + "og.png?v=" + card_version(), "Bank Earnings Reports by @dmgerbino", "website")}
 <style>
 :root{{--bg:#F6F7F9;--surface:#FFFFFF;--fg:#11161C;--muted:#56606C;--rule:#D9DEE4;--accent:#2A6DB0;color-scheme:light}}
 @media (prefers-color-scheme:dark){{:root:not([data-theme="light"]){{--bg:#000000;--surface:#0D0F12;--fg:#F0EDEA;--muted:#A39F99;--rule:#25292E;--accent:#5B9BD5;color-scheme:dark}}}}
