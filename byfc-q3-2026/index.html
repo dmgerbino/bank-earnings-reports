@@ -1,0 +1,476 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<style>
+.pub-nav{max-width:46rem;margin:0 auto;padding:12px 16px 0;font:600 .875rem/1.4 var(--sans,system-ui,-apple-system,sans-serif)}
+.pub-nav a,.pub-media a{color:var(--accent,var(--brand,#2A6DB0))}
+.pub-media{margin:1.5rem 0;font-family:var(--sans,system-ui,-apple-system,sans-serif)}
+.pub-vids{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px;max-width:520px}
+.pub-vids figure{margin:0}
+.pub-vids video{display:block;width:100%;aspect-ratio:9/16;background:#000;border-radius:10px}
+.pub-vids figcaption{font-size:.875rem;color:var(--muted,#5A626C);margin-top:6px}
+.pub-img img{display:block;width:100%;max-width:520px;height:auto;border-radius:10px;border:1px solid var(--rule,var(--border,#DDE1E6))}
+.pub-dl{font-size:.875rem;color:var(--muted,#5A626C);line-height:1.8}
+</style><nav class="pub-nav"><a href="../">← All bank earnings reports</a></nav>
+
+<title>Broadway Financial Q3 2026</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap">
+<style>
+/* Layout: single reading column, data panels on a quiet ruled ground; one blue accent for the reporting bank */
+:root{--bg:#F7F8FA;--surface:#FFFFFF;--fg:#14181F;--muted:#5A6270;--rule:#DDE1E7;--accent:#2F6FB0;--peer:#9AA1AC;--good:#1E8A57;--bad:#C2412D;--warn:#A86B00;
+--serif:"Source Serif 4",Georgia,serif;--sans:"IBM Plex Sans",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000000;--surface:#0D0D0D;--fg:#F0EDEA;--muted:#A19D97;--rule:#262626;--accent:#5B9BD5;--peer:#6E6B67;--good:#3DD68C;--bad:#FF6B52;--warn:#F5A623;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#000000;--surface:#0D0D0D;--fg:#F0EDEA;--muted:#A19D97;--rule:#262626;--accent:#5B9BD5;--peer:#6E6B67;--good:#3DD68C;--bad:#FF6B52;--warn:#F5A623;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:1rem/1.6 var(--serif)}
+.wrap{max-width:46rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:2rem 4rem}
+.eyebrow{font:600 .875rem var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+h1{font:700 1.953rem/1.2 var(--serif);text-wrap:balance;margin:.5rem 0 1rem}
+h2{font:600 1.25rem/1.3 var(--sans);margin:2.75rem 0 .5rem;padding-top:1rem;border-top:1px solid var(--rule);text-wrap:balance}
+h3{font:600 1rem var(--sans);margin:1.25rem 0 .25rem}
+p,li{max-width:65ch}
+.lede{font-size:1.125rem}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:.75rem;margin-top:1.5rem}
+.kpi{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:.875rem 1rem;font-family:var(--sans);font-variant-numeric:tabular-nums;min-width:0}
+.kpi .l{font-size:.875rem;color:var(--muted)}.kpi .v{font-size:1.75rem;font-weight:700;line-height:1.2}
+.kpi .c{font-size:.875rem;font-weight:600}.up{color:var(--good)}.dn{color:var(--bad)}.wn{color:var(--warn)}
+.chart{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:.75rem;margin:.75rem 0;min-width:0}
+.chart .t{font:600 .9375rem/1.35 var(--sans);margin:0 0 .25rem}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart text{font-family:var(--sans);fill:var(--fg)}
+.chart .mut{fill:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.75rem}
+.tbl{overflow-x:auto;margin:.75rem 0}
+table{border-collapse:collapse;font:0.875rem var(--sans);font-variant-numeric:tabular-nums;width:100%;min-width:34rem}
+th,td{padding:.45rem .5rem;border-bottom:1px solid var(--rule);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--muted);font-weight:600}
+tr.me td{font-weight:600;color:var(--accent)}
+.small{font:0.875rem/1.5 var(--sans);color:var(--muted)}
+a{color:var(--accent)}
+#tip{position:fixed;pointer-events:none;background:var(--surface);color:var(--fg);border:1px solid var(--rule);border-radius:6px;padding:.3rem .5rem;font:.875rem var(--sans);font-variant-numeric:tabular-nums}
+button#theme{font:600 .875rem var(--sans);background:none;border:1px solid var(--rule);color:var(--fg);border-radius:6px;padding:.2rem .6rem;cursor:pointer}
+button#theme:focus-visible{outline:2px solid var(--accent)}
+</style>
+<div class="wrap">
+<div class="eyebrow"><span>Broadway Financial · Nasdaq: BYFC · Q3 2026</span><button id="theme" type="button">Theme</button></div>
+<h1 id="thesis"></h1>
+<p class="lede" id="lede"></p>
+<!-- pub:media --><section class="pub-media" aria-label="Video and infographic"><h2>Watch</h2><div class="pub-vids"><figure><video controls playsinline preload="metadata" poster="BYFC-Q3-2026-mobile.png" src="BYFC-Q3-2026-captioned.mp4"></video><figcaption>Full video</figcaption></figure><figure><video controls playsinline preload="metadata" poster="BYFC-Q3-2026-mobile.png" src="BYFC-Q3-2026-short-captioned.mp4"></video><figcaption>60-second cut</figcaption></figure></div><h2>Infographic</h2><a class="pub-img" href="BYFC-Q3-2026-infographic.png"><img src="BYFC-Q3-2026-infographic.png" alt="Broadway Financial Q3 2026 earnings infographic" loading="lazy"></a><p class="pub-dl">Downloads: <a href="BYFC-Q3-2026-clean.mp4" download>Full video, no captions</a> · <a href="BYFC-Q3-2026-short-clean.mp4" download>60-second cut, no captions</a> · <a href="BYFC-Q3-2026.srt" download>Captions (.srt)</a> · <a href="BYFC-Q3-2026-short.srt" download>60-second captions (.srt)</a> · <a href="BYFC-Q3-2026-mobile.png" download>Mobile graphic (PNG)</a> · <a href="BYFC-Q3-2026-mobile.svg" download>Mobile graphic (SVG)</a> · <a href="BYFC-Q3-2026-infographic.svg" download>Infographic (SVG)</a></p></section><!-- /pub:media -->
+<p class="small">Quarter ended Sep 30, 2026 (calendar Q3). Released Nov 13, 2026, 4:05 p.m. ET. GAAP unless noted; EPS is net income to common after preferred dividends.</p>
+<div class="kpis" id="kpis"></div>
+
+<h2>Against expectations</h2>
+<p>No beat or miss can be stated. No pre-release consensus was found (MarketBeat, Chartmill and Seeking Alpha showed no usable estimate, and no earnings-day wire story named one), and Broadway gives no guidance. The bullet chart is skipped for that reason.</p>
+<h2>What moved</h2>
+<p>Net interest income rose in every quarter shown, funded by deposits that grew $260.8M in a year. The margin did not widen: loan yield rose 4 bp from Q2 to 5.26% while the cost of interest-bearing liabilities rose 3 bp to 3.05%. Q3 2025 is distorted by a $25.9M goodwill impairment, so the trend charts avoid net income.</p>
+<div class="grid" id="c-trends"></div>
+<h2>Against peers</h2>
+<p>Against three community banks of similar size that reported the same calendar quarter, Broadway grew net interest income slowest, had the lowest verified margin and the second-highest cost ratio. Its capital is mid-pack, but its CBLR is a different measure from peers' Tier 1 leverage.</p>
+<div class="grid" id="c-peers"></div>
+<div class="tbl"><table id="t-peers"></table></div>
+<p class="small">n/v = not verified. *Bank-level, secondary source. Leverage ratios are not identical measures.</p>
+<ul class="small" id="why"></ul>
+<h2>Guidance</h2>
+<p>Broadway gives no numeric guidance and no next-quarter consensus was found. CEO Brian Argrett said the focus is on "optimizing the balance sheet, enhancing profitability." The chart is skipped.</p>
+<h2>Profitability</h2>
+<p>Net income to common rose $174K from Q2. Lower provision (+$813K) and higher net interest income (+$406K) outweighed an $855K rise in expenses and a $454K drop in fee income (Q2 included a one-time $450K New Markets Tax Credit fee). The bridge runs from Q2 because Q3 2025 includes the goodwill impairment.</p>
+<div class="chart"><p class="t">A lower provision did most of the work in the quarter-over-quarter gain</p><div id="c-bridge"></div></div>
+<h3>GAAP and non-GAAP</h3>
+<p>The company also reports net income before preferred dividends: $1.1M ($0.13 a share) in Q3, against $968K in Q2. The gap to GAAP net income to common is the preferred dividend. "Taxes and preferred" in the bridge is derived as the residual.</p>
+<h2>Risks and open questions</h2>
+<ul id="risks"></ul>
+<h2>What to watch next quarter</h2>
+<ul><li><strong>Net interest margin</strong> (2.64%): growth needs to come with a wider spread, not just a bigger balance sheet.</li><li><strong>Noninterest expense</strong> ($8.3M): a fall back toward $7.5M would put efficiency near 72%.</li><li><strong>Nonaccrual loans</strong> (1.20% of loans) and the 0.87% reserve.</li><li><strong>Book value</strong> ($11.37) and the CBLR (12.83%) if rates keep rising.</li><li>Carver Bancorp (CARV), another minority depository institution, reports its September quarter next.</li></ul>
+<h2>What the data doesn't show</h2>
+<ul><li>No consensus estimate was found, so no beat or miss is stated.</li><li>Q4 2025 and Q1 2026 diluted EPS are not in the release text read; the trend charts use other lines.</li><li>PNBK's net interest margin is not verified and its leverage ratio is bank-level from a secondary source; PNBK and OPHC figures come from their reports on this site.</li><li>PDLB's Q3 net income includes a $10.5M tax valuation allowance release; it is not used in the comparison.</li><li>The 10-Q was not read; deposit mix and CDFI grant income are not shown.</li></ul>
+<h2>Method and sources</h2>
+<p class="small">BYFC figures: <a href="https://finance.yahoo.com/markets/stocks/articles/broadway-financial-corporation-reports-third-210500744.html" target="_blank" rel="noopener">earnings release, Business Wire via Yahoo Finance, Nov 13, 2026, 1:05 p.m. PT</a>. Peers: <a href="https://www.sec.gov/Archives/edgar/data/0001874071/000119312526431222/pdlb-ex99_1.htm" target="_blank" rel="noopener">Ponce Q3 2026 8-K Exhibit 99.1</a>, <a href="https://dmgerbino.github.io/bank-earnings-reports/pnbk-q3-2026/" target="_blank" rel="noopener">PNBK report</a> and <a href="https://dmgerbino.github.io/bank-earnings-reports/ophc-q3-2026/" target="_blank" rel="noopener">OPHC report</a> on this site. Peers chosen by mission (PDLB) and similar asset size with the same calendar quarter (PNBK, OPHC). Revenue is net interest income plus noninterest income. The 9% CBLR threshold is the regulatory well-capitalized minimum for the framework, not a target. GAAP, USD. As of Nov 13, 2026. Not investment advice.</p>
+</div>
+<div id="tip" hidden></div>
+<script>
+const D={
+ "company": "Broadway Financial Corporation",
+ "ticker": "BYFC",
+ "exchange": "Nasdaq",
+ "type": "bank (holding company for City First Bank, N.A.)",
+ "fiscal_period": "Q3 2026",
+ "calendar_dates": "2026-07-01 to 2026-09-30",
+ "release_date": "2026-11-13 16:05 ET (1:05 PM PT, Business Wire)",
+ "source_url": "https://finance.yahoo.com/markets/stocks/articles/broadway-financial-corporation-reports-third-210500744.html",
+ "units": "USD thousands unless noted; GAAP, plus company non-GAAP net income before preferred dividends",
+ "quarters": [
+  "Q3 2025",
+  "Q4 2025",
+  "Q1 2026",
+  "Q2 2026",
+  "Q3 2026"
+ ],
+ "series": {
+  "net_income_common": [
+   -24633,
+   275,
+   409,
+   218,
+   392
+  ],
+  "nii": [
+   8617,
+   8730,
+   9053,
+   9490,
+   9896
+  ],
+  "nim_pct": [
+   2.72,
+   2.62,
+   2.75,
+   2.65,
+   2.64
+  ],
+  "nonii": [
+   422,
+   687,
+   589,
+   950,
+   496
+  ],
+  "nonie": [
+   31518,
+   7946,
+   8015,
+   7476,
+   8331
+  ],
+  "efficiency_pct": [
+   348.69,
+   84.38,
+   83.13,
+   71.61,
+   80.17
+  ],
+  "provision": [
+   679,
+   47,
+   200,
+   1481,
+   668
+  ],
+  "total_assets": [
+   1335565,
+   1345569,
+   1426065,
+   1563699,
+   1556923
+  ],
+  "loans": [
+   1023483,
+   1025964,
+   1068771,
+   1137338,
+   1142654
+  ],
+  "deposits": [
+   849205,
+   917603,
+   1073056,
+   1114651,
+   1109962
+  ],
+  "bvps": [
+   12.17,
+   12.28,
+   12.1,
+   12.11,
+   11.37
+  ],
+  "roaa_pct": [
+   -7.48,
+   0.08,
+   0.12,
+   0.06,
+   0.1
+  ],
+  "revenue": [
+   9039,
+   9417,
+   9642,
+   10440,
+   10392
+  ]
+ },
+ "eps_diluted": {
+  "Q3 2025": -2.86,
+  "Q2 2026": 0.02,
+  "Q3 2026": 0.04
+ },
+ "uninsured_deposits_pct": 34,
+ "equity_k": 255500,
+ "consensus": {
+  "eps": null,
+  "revenue": null,
+  "note": "consensus not found: MarketBeat, Chartmill and Seeking Alpha estimate pages showed no usable pre-release estimate; no earnings-day wire story named one"
+ },
+ "computed": {
+  "nii": {
+   "yoy_pct": 14.8,
+   "qoq_pct": 4.3
+  },
+  "revenue": {
+   "yoy_pct": 15.0,
+   "qoq_pct": -0.5
+  },
+  "deposits": {
+   "yoy_pct": 30.7,
+   "qoq_pct": -0.4
+  },
+  "loans": {
+   "yoy_pct": 11.6,
+   "qoq_pct": 0.5
+  },
+  "total_assets": {
+   "yoy_pct": 16.6
+  },
+  "bvps": {
+   "yoy_pct": -6.6,
+   "qoq_pct": -6.1
+  },
+  "nonie_qoq_pct": 11.4,
+  "nim_bp_yoy": -8,
+  "nim_bp_qoq": -1,
+  "efficiency_recalc_pct": 80.17,
+  "cblr_pct": 12.83,
+  "cblr_cushion_bp": 383,
+  "nco_ratio_pct": 0.13,
+  "acl_to_loans_pct": 0.87,
+  "npa_to_assets_pct": [
+   1.01,
+   0.71,
+   0.88
+  ],
+  "nonaccrual_to_loans_pct": [
+   1.32,
+   0.98,
+   1.2
+  ],
+  "pre_preferred_ni_k": [
+   2000,
+   968,
+   1100
+  ],
+  "preferred_div_9m_k": 2300,
+  "q3_2025_note": "Q3 2025 includes a $25.9M goodwill impairment; excluding it and preferred dividends, net income was $2.0M ($0.23).",
+  "net_income_bridge_k": [
+   [
+    "Q2 2026 net income to common",
+    218,
+    "total"
+   ],
+   [
+    "Net interest income",
+    406,
+    "d"
+   ],
+   [
+    "Noninterest income",
+    -454,
+    "d"
+   ],
+   [
+    "Noninterest expense",
+    -855,
+    "d"
+   ],
+   [
+    "Provision",
+    813,
+    "d"
+   ],
+   [
+    "Taxes and preferred",
+    264,
+    "d"
+   ],
+   [
+    "Q3 2026 net income to common",
+    392,
+    "total"
+   ]
+  ],
+  "peer_position": {
+   "nii_yoy": {
+    "co": 14.8,
+    "peer_median": 51.9,
+    "better_is": "higher",
+    "rank": "4 of 4",
+    "gap": -37.1
+   },
+   "nim": {
+    "co": 2.64,
+    "peer_median": 4.25,
+    "better_is": "higher",
+    "rank": "3 of 3",
+    "gap": -1.61
+   },
+   "eff": {
+    "co": 80.17,
+    "peer_median": 55.21,
+    "better_is": "lower",
+    "rank": "3 of 4",
+    "gap": 24.96
+   },
+   "lev": {
+    "co": 12.83,
+    "peer_median": 12.23,
+    "better_is": "higher",
+    "rank": "2 of 4",
+    "gap": 0.6
+   }
+  }
+ },
+ "peers": [
+  {
+   "ticker": "PDLB",
+   "name": "Ponce Financial Group",
+   "released": "2026-10-26",
+   "why": "New York minority depository institution and CDFI, Broadway's closest mission peer",
+   "nii_k": [
+    25200,
+    34000
+   ],
+   "nim": 3.86,
+   "eff": 55.21,
+   "lev": 16.46,
+   "lev_label": "Tier 1 capital to assets (company)",
+   "dep_yoy": 14.8,
+   "note": "Q3 2026 net income includes a $10.5M tax valuation allowance release",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001874071/000119312526431222/pdlb-ex99_1.htm",
+   "nii_yoy": 34.9,
+   "period": "Q3 2026 (Jul 1-Sep 30, 2026)"
+  },
+  {
+   "ticker": "PNBK",
+   "name": "Patriot National Bancorp",
+   "released": "2026-11-12",
+   "why": "Similar-size ($1-1.6B) coastal community bank on the same quarter",
+   "nii_k": [
+    4991,
+    10700
+   ],
+   "nim": null,
+   "eff": 94.0,
+   "lev": 9.79,
+   "lev_label": "Tier 1 leverage (bank, secondary source)",
+   "dep_yoy": null,
+   "note": "NIM not verified",
+   "url": "https://dmgerbino.github.io/bank-earnings-reports/pnbk-q3-2026/",
+   "nii_yoy": 114.4,
+   "period": "Q3 2026 (Jul 1-Sep 30, 2026)"
+  },
+  {
+   "ticker": "OPHC",
+   "name": "OptimumBank Holdings",
+   "released": "2026-11-12",
+   "why": "Similar-size ($1.6B) community bank on the same quarter",
+   "nii_k": [
+    11048,
+    16781
+   ],
+   "nim": 4.63,
+   "eff": 45.86,
+   "lev": 12.23,
+   "lev_label": "Tier 1 leverage",
+   "dep_yoy": 40.0,
+   "url": "https://dmgerbino.github.io/bank-earnings-reports/ophc-q3-2026/",
+   "nii_yoy": 51.9,
+   "period": "Q3 2026 (Jul 1-Sep 30, 2026)"
+  }
+ ],
+ "thesis": "Deposits grew 31% in a year, but Broadway had the thinnest margin and second-highest cost ratio among similar-size peers",
+ "lede": "Broadway earned $392,000 for common shareholders, or $0.04 a share, up from $0.02 in the second quarter. Deposits rose 31% from a year ago and loans 12%, yet the 2.64% margin slipped and expenses took 80 cents of each revenue dollar. The open question is whether growth can outrun funding costs and the $2.3 million a year of preferred dividends.",
+ "takeaways": [
+  "Diluted EPS was $0.04, up from $0.02 in Q2; no analyst consensus was found, so no beat or miss is stated.",
+  "Deposits grew 30.7% YoY to $1.11B and loans 11.6% to $1.14B; uninsured deposits are 34% of the total.",
+  "Efficiency ratio rose to 80.2% from 71.6% in Q2, ranking 3 of 4 against a 55.2% peer median.",
+  "NIM of 2.64% is the lowest of the three banks with a verified margin (peer median 4.25%), down 8 bp YoY.",
+  "Book value fell to $11.37 a share from $12.11 in Q2, mainly on unrealized securities losses; CBLR 12.83%."
+ ],
+ "script_seed": [
+  {
+   "state": "tier-0",
+   "text": "Broadway Financial's third quarter: fast balance sheet growth, thin profits."
+  },
+  {
+   "state": "tier-1",
+   "text": "Earnings were four cents a share, up from two cents last quarter. No analyst estimate was found."
+  },
+  {
+   "state": "tier-2",
+   "text": "Deposits reached one point one one billion dollars, up thirty-one percent in a year."
+  },
+  {
+   "state": "tier-3",
+   "text": "The efficiency ratio rose to eighty percent, third of four peers."
+  },
+  {
+   "state": "tier-4",
+   "text": "Net interest margin was two point six four percent, the lowest of the group."
+  }
+ ]
+};
+const CFG={"kpis": [["Diluted EPS", "$0.04", "+$0.02 QoQ \u00b7 no est. found", "up"], ["Net interest income", "$9.9M", "+14.8% YoY", "up"], ["Deposits", "$1.11B", "+30.7% YoY", "up"], ["Net interest margin", "2.64%", "\u22128 bp YoY", "dn"], ["Efficiency ratio", "80.2%", "+8.6 pts QoQ (worse)", "dn"], ["Community bank leverage", "12.83%", "vs 9% well-capitalized minimum", "up"]], "bullet": [], "trends": [["Net interest income rose every quarter", "nii", "$k"], ["Deposits grew 31% in a year", "deposits", "$b"], ["Margin stuck in a 2.6-2.8% band", "nim_pct", "%"], ["Book value per share fell in Q3", "bvps", "$"]], "peerMeta": {"nii_yoy": ["Net interest income growth YoY, %", "slowest of four", "nii_yoy"], "nim": ["Net interest margin, %", "lowest of three verified", "nim"], "eff": ["Efficiency ratio, % (lower is better)", "third of four", "eff"], "lev": ["Leverage ratio, %", "second of four", "lev"]}, "table": {"head": ["Bank", "Period", "NII YoY", "NIM", "Efficiency", "Leverage", "Released"], "rows": [["BYFC", "Q3 2026", "+14.8%", "2.64%", "80.2%", "12.83% (CBLR)", "Nov 13"], ["PDLB", "Q3 2026", "+34.9%", "3.86%", "55.2%", "16.46%", "Oct 26"], ["PNBK", "Q3 2026", "+114.4%", "n/v", "94.0%", "9.79%*", "Nov 12"], ["OPHC", "Q3 2026", "+51.9%", "4.63%", "45.9%", "12.23%", "Nov 12"]]}, "risks": ["<strong>Thin margin.</strong> NIM of 2.64% sits 161 bp below the peer median. Loan yield is 5.26% against a 3.05% cost of interest-bearing liabilities.", "<strong>Expense growth.</strong> Noninterest expense rose 11.4% QoQ to $8.3M (compensation +$431K, information services +$247K), against 4.3% NII growth.", "<strong>Preferred dividends.</strong> $2.3M over nine months took most of the $3.3M earned before preferred dividends.", "<strong>Credit drift.</strong> Nonperforming assets rose to 0.88% of assets from 0.71% in Q2; net charge-offs were 0.13% of loans, up from 0.03%; reserve is 0.87% of loans.", "<strong>Unrealized losses.</strong> Book value fell $0.74 a share in the quarter, mainly on securities losses, as the securities book grew $48.6M this year."]};
+
+const S=D.series,M=D.computed,Q=D.quarters.map(q=>q.replace(" 20","'"));
+document.getElementById("thesis").textContent=D.thesis+".";
+document.getElementById("lede").textContent=D.lede;
+const fm=(v,u)=>u==="$k"?"$"+(v/1000).toFixed(1)+"M":u==="$b"?"$"+(v/1e6).toFixed(2)+"B":u==="%"?v.toFixed(2)+"%":u==="$"?"$"+v.toFixed(2):v;
+document.getElementById("kpis").innerHTML=CFG.kpis.map(k=>`<div class="kpi"><div class="l">${k[0]}</div><div class="v">${k[1]}</div><div class="c ${k[3]}">${k[2]}</div></div>`).join("");
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const tip=document.getElementById("tip");
+function hov(el,txt){el.addEventListener("pointerenter",e=>{tip.textContent=txt;tip.hidden=false});el.addEventListener("pointermove",e=>{tip.style.left=Math.min(e.clientX+12,innerWidth-180)+"px";tip.style.top=(e.clientY+12)+"px"});el.addEventListener("pointerleave",()=>tip.hidden=true)}
+const NS="http://www.w3.org/2000/svg";
+function svg(host,w,h){host.innerHTML="";const s=document.createElementNS(NS,"svg");s.setAttribute("viewBox",`0 0 ${w} ${h}`);host.appendChild(s);return s}
+function el(p,t,a,txt){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;p.appendChild(e);return e}
+function W(host){return Math.max(260,host.clientWidth)}
+function bullet(){const h=document.getElementById("c-bullet");if(!h)return;const w=W(h),rows=CFG.bullet,s=svg(h,w,20+rows.length*68);
+ rows.forEach((r,i)=>{const y=20+i*68,x0=0,x1=w-90,sc=v=>x0+v/r[3]*(x1-x0),f=v=>"$"+v.toFixed(2);
+  el(s,"text",{x:0,y:y,"font-size":13,class:"mut"},r[0]);
+  el(s,"rect",{x:x0,y:y+8,width:x1-x0,height:24,fill:css("--rule")});
+  const b=el(s,"rect",{x:x0,y:y+14,width:sc(r[1])-x0,height:12,fill:css("--accent")});hov(b,`${r[0]} actual ${f(r[1])}`);
+  const t=el(s,"line",{x1:sc(r[2]),x2:sc(r[2]),y1:y+4,y2:y+36,stroke:css("--fg"),"stroke-width":2.5});hov(t,`${r[4]} ${f(r[2])}`);
+  el(s,"text",{x:sc(r[1])+6,y:y+25,"font-size":13,"font-weight":600},f(r[1]));
+  el(s,"text",{x:sc(r[2]),y:y+52,"font-size":12,class:"mut","text-anchor":"middle"},r[4]+" "+f(r[2]));});}
+function trends(){const g=document.getElementById("c-trends");g.innerHTML="";
+ CFG.trends.forEach(p=>{const c=document.createElement("div");c.className="chart";c.innerHTML=`<p class="t">${p[0]}</p><div></div>`;g.appendChild(c);
+  const h=c.lastChild,w=W(h),H=150,s=svg(h,w,H),v=S[p[1]],mn=Math.min(...v),mx=Math.max(...v),pad=(mx-mn)*.25||1,lo=mn-pad,hi=mx+pad;
+  const X=i=>18+i*(w-56)/4,Y=x=>H-28-(x-lo)/(hi-lo)*(H-56);
+  el(s,"line",{x1:0,x2:w,y1:H-22,y2:H-22,stroke:css("--rule")});
+  el(s,"polyline",{points:v.map((x,i)=>X(i)+","+Y(x)).join(" "),fill:"none",stroke:css("--accent"),"stroke-width":2.5});
+  v.forEach((x,i)=>{const r=el(s,"circle",{cx:X(i),cy:Y(x),r:i==4?5:3.5,fill:css("--accent")});hov(r,`${Q[i]}: ${fm(x,p[2])}`);
+   el(s,"text",{x:X(i),y:H-6,"font-size":11,class:"mut","text-anchor":"middle"},Q[i]);
+   if(i==0||i==4)el(s,"text",{x:X(i),y:Y(x)-10,"font-size":12,"font-weight":i==4?700:400,"text-anchor":i==0?"start":"end"},fm(x,p[2]));});});}
+function peers(){const g=document.getElementById("c-peers");g.innerHTML="";const PP=M.peer_position;
+ const order=Object.keys(PP).sort((a,b)=>Math.abs(PP[b].gap/(PP[b].peer_median||1))-Math.abs(PP[a].gap/(PP[a].peer_median||1)));
+ order.forEach(k=>{const m=CFG.peerMeta[k];const c=document.createElement("div");c.className="chart";c.innerHTML=`<p class="t">${m[0]}: ${D.ticker} ${m[1]}</p><div></div>`;g.appendChild(c);
+  const h=c.lastChild,w=W(h),H=84,s=svg(h,w,H);const pts=[[D.ticker,PP[k].co,1]].concat(D.peers.filter(p=>p[m[2]]!=null).map(p=>[p.ticker,p[m[2]],0]));
+  const vs=pts.map(p=>p[1]).concat(PP[k].peer_median),mn=Math.min(...vs),mx=Math.max(...vs),r=(mx-mn)||1,lo=mn-r*.1,hi=mx+r*.1,X=v=>24+(v-lo)/(hi-lo)*(w-48);
+  el(s,"line",{x1:8,x2:w-8,y1:46,y2:46,stroke:css("--rule")});
+  el(s,"line",{x1:X(PP[k].peer_median),x2:X(PP[k].peer_median),y1:30,y2:62,stroke:css("--muted"),"stroke-width":1});
+  el(s,"text",{x:X(PP[k].peer_median),y:78,"font-size":11,class:"mut","text-anchor":"middle"},"median "+PP[k].peer_median);
+  const sorted=pts.slice().sort((a,b)=>a[1]-b[1]);let last=-99,flip=0;
+  sorted.forEach(p=>{const x=X(p[1]);const d=el(s,"circle",{cx:x,cy:46,r:p[2]?7:5.5,fill:p[2]?css("--accent"):css("--peer")});hov(d,`${p[0]}: ${p[1]}`);
+   flip=(x-last<44)?1-flip:0;last=x;el(s,"text",{x:x,y:flip?20:32,"font-size":11.5,"font-weight":p[2]?700:400,"text-anchor":"middle",fill:p[2]?css("--accent"):css("--fg")},p[0]);});});
+ const t=document.getElementById("t-peers");t.innerHTML="<tr>"+CFG.table.head.map(x=>`<th>${x}</th>`).join("")+"</tr>"+CFG.table.rows.map(r=>`<tr class="${r[0]==D.ticker?"me":""}">${r.map(x=>`<td>${x}</td>`).join("")}</tr>`).join("");
+ document.getElementById("why").innerHTML=D.peers.map(p=>`<li><strong>${p.ticker}</strong> (${p.name}): ${p.why}.${p.note?" Note: "+p.note+".":""}</li>`).join("");}
+function bridge(){const h=document.getElementById("c-bridge"),w=W(h),B=M.net_income_bridge_k,rowH=30,H=B.length*rowH+10,s=svg(h,w,H),lab=Math.min(170,w*.44),x0=lab+6,x1=w-64;let run=0,lo=0,hi=0;
+ B.forEach(b=>{if(b[2]=="total"){run=b[1]}else{run+=b[1]}lo=Math.min(lo,run);hi=Math.max(hi,run)});const X=v=>x0+(v-lo)/(hi*1.05-lo)*(x1-x0);run=0;
+ B.forEach((b,i)=>{const y=i*rowH+4;el(s,"text",{x:0,y:y+16,"font-size":12},b[0]);let a,z,col;
+  if(b[2]=="total"){a=0;z=b[1];run=b[1];col=css("--accent")}else{a=run;z=run+b[1];run=z;col=b[1]>0?css("--good"):css("--bad")}
+  const r=el(s,"rect",{x:X(Math.min(a,z)),y:y+4,width:Math.max(1,Math.abs(X(z)-X(a))),height:rowH-12,fill:col});hov(r,`${b[0]}: ${b[1]>0&&b[2]!="total"?"+":""}$${(b[1]/1000).toFixed(2)}M`);
+  el(s,"text",{x:X(Math.max(a,z))+5,y:y+16,"font-size":12,"font-weight":600},(b[2]!="total"?(b[1]>0?"+":"−"):"")+"$"+(Math.abs(b[1])/1000).toFixed(2)+"M");});}
+document.getElementById("risks").innerHTML=CFG.risks.map(x=>"<li>"+x+"</li>").join("");
+function draw(){bullet();trends();peers();bridge()}
+draw();let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(draw,120)});
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",draw);
+document.getElementById("theme").addEventListener("click",()=>{const r=document.documentElement,cur=r.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");r.dataset.theme=cur=="dark"?"light":"dark";draw()});
+
+</script>
+</body></html>

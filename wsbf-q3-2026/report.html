@@ -1,0 +1,542 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Waterstone Q3 2026</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap">
+<style>
+/* Layout: single reading column, data panels on a quiet ruled ground; one blue accent for the reporting bank */
+:root{--bg:#F7F8FA;--surface:#FFFFFF;--fg:#14181F;--muted:#5A6270;--rule:#DDE1E7;--accent:#2F6FB0;--peer:#9AA1AC;--good:#1E8A57;--bad:#C2412D;--warn:#A86B00;
+--serif:"Source Serif 4",Georgia,serif;--sans:"IBM Plex Sans",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000000;--surface:#0D0D0D;--fg:#F0EDEA;--muted:#A19D97;--rule:#262626;--accent:#5B9BD5;--peer:#6E6B67;--good:#3DD68C;--bad:#FF6B52;--warn:#F5A623;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#000000;--surface:#0D0D0D;--fg:#F0EDEA;--muted:#A19D97;--rule:#262626;--accent:#5B9BD5;--peer:#6E6B67;--good:#3DD68C;--bad:#FF6B52;--warn:#F5A623;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:1rem/1.6 var(--serif)}
+.wrap{max-width:46rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:2rem 4rem}
+.eyebrow{font:600 .875rem var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+h1{font:700 1.953rem/1.2 var(--serif);text-wrap:balance;margin:.5rem 0 1rem}
+h2{font:600 1.25rem/1.3 var(--sans);margin:2.75rem 0 .5rem;padding-top:1rem;border-top:1px solid var(--rule);text-wrap:balance}
+h3{font:600 1rem var(--sans);margin:1.25rem 0 .25rem}
+p,li{max-width:65ch}
+.lede{font-size:1.125rem}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:.75rem;margin-top:1.5rem}
+.kpi{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:.875rem 1rem;font-family:var(--sans);font-variant-numeric:tabular-nums;min-width:0}
+.kpi .l{font-size:.875rem;color:var(--muted)}.kpi .v{font-size:1.75rem;font-weight:700;line-height:1.2}
+.kpi .c{font-size:.875rem;font-weight:600}.up{color:var(--good)}.dn{color:var(--bad)}.wn{color:var(--warn)}
+.chart{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:.75rem;margin:.75rem 0;min-width:0}
+.chart .t{font:600 .9375rem/1.35 var(--sans);margin:0 0 .25rem}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart text{font-family:var(--sans);fill:var(--fg)}
+.chart .mut{fill:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.75rem}
+.tbl{overflow-x:auto;margin:.75rem 0}
+table{border-collapse:collapse;font:0.875rem var(--sans);font-variant-numeric:tabular-nums;width:100%;min-width:34rem}
+th,td{padding:.45rem .5rem;border-bottom:1px solid var(--rule);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--muted);font-weight:600}
+tr.me td{font-weight:600;color:var(--accent)}
+.small{font:0.875rem/1.5 var(--sans);color:var(--muted)}
+a{color:var(--accent)}
+#tip{position:fixed;pointer-events:none;background:var(--surface);color:var(--fg);border:1px solid var(--rule);border-radius:6px;padding:.3rem .5rem;font:.875rem var(--sans);font-variant-numeric:tabular-nums}
+button#theme{font:600 .875rem var(--sans);background:none;border:1px solid var(--rule);color:var(--fg);border-radius:6px;padding:.2rem .6rem;cursor:pointer}
+button#theme:focus-visible{outline:2px solid var(--accent)}
+</style>
+<div class="wrap">
+<div class="eyebrow"><span>Waterstone Financial · Nasdaq: WSBF · Q3 2026</span><button id="theme" type="button">Theme</button></div>
+<h1 id="thesis"></h1>
+<p class="lede" id="lede"></p>
+<p class="small">Quarter ended Sep 30, 2026 (calendar Q3). Released Nov 13, 2026, 4:01 p.m. ET. All figures GAAP; Waterstone reports no adjusted EPS.</p>
+<div class="kpis" id="kpis"></div>
+
+<h2>Against expectations</h2>
+<p>The only pre-release estimate found was MarketBeat's $0.66. Against it, EPS missed by $0.30 (45%). Treat that with caution: MarketBeat listed the same $0.66 for Q2 (actual $0.49), and its $65.8M revenue estimate is nearly double Waterstone's actual revenue, so the figure looks stale. Waterstone gives no guidance.</p>
+<div class="chart"><p class="t">EPS came in at $0.36, far below a single-source $0.66 listing</p><div id="c-bullet"></div></div>
+<h2>What moved</h2>
+<p>Net interest margin rose for the fifth straight quarter as the cost of interest-bearing deposits fell to 2.95% from 3.19% a year ago while loan yields held at 5.93%. Mortgage originations fell 18.0% from Q2 to $509.7M and the gain-on-sale margin slipped to 3.48%.</p>
+<div class="grid" id="c-trends"></div>
+<h2>Against peers</h2>
+<p>Against three Wisconsin banks that reported the same calendar quarter, Waterstone ranks last on revenue growth, EPS growth, margin and efficiency. Its mortgage business inflates the efficiency ratio; the community banking segment alone ran at 49.6%, better than every peer.</p>
+<div class="grid" id="c-peers"></div>
+<div class="tbl"><table id="t-peers"></table></div>
+<ul class="small" id="why"></ul>
+<h2>Guidance</h2>
+<p>Waterstone gives no numeric guidance and no next-quarter consensus was found. CEO William Bruss said mortgage volume "was hindered by a significant jump in mortgage rates." The chart is skipped.</p>
+<h2>Profitability</h2>
+<p>Net income fell $1.75M from a year ago. Net interest income added $1.68M, but noninterest income fell $3.01M and the provision swung $0.71M higher.</p>
+<div class="chart"><p class="t">Lower mortgage income erased the gain from net interest income</p><div id="c-bridge"></div></div>
+<h3>GAAP and adjusted</h3>
+<p>Waterstone reports GAAP only, so there is nothing to reconcile. Segment view: community banking earned $6.57M (Q3 2025: $6.92M); mortgage banking lost $0.47M (Q3 2025: +$0.95M). The quarter included a $391K gain on selling servicing rights on $121.9M of loans.</p>
+<h2>Risks and open questions</h2>
+<ul id="risks"></ul>
+<h2>What to watch next quarter</h2>
+<ul><li><strong>Mortgage originations and sale margin</strong> ($509.7M, 3.48%): a second losing quarter would make the segment a drag on the year.</li><li><strong>Nonaccrual loans</strong> (0.68%): does the one relationship resolve or spread?</li><li><strong>Cost of interest-bearing deposits</strong> (2.95%): further declines keep the margin rising.</li><li><strong>Share count</strong> (17.99M, down from 18.36M at year end) and the $0.17 dividend.</li><li>Peers BFC, FBIZ and CZWI report Q4 2026 in late January 2027.</li></ul>
+<h2>What the data doesn't show</h2>
+<ul><li>Consensus is a single MarketBeat listing that looks stale; no Zacks or wire-service estimate was found. Revenue consensus is not used because its basis does not match.</li><li>The release gives no net charge-offs and no regulatory capital ratios; equity was 15.4% of assets (computed).</li><li>The release came about six weeks after quarter end, later than Waterstone's usual October timing; it gives no reason.</li><li>Consolidated efficiency ratio is computed (noninterest expense / revenue); the company reports segment ratios only.</li><li>BFC's growth includes an acquisition; peer beat or miss against their own consensus was not gathered.</li></ul>
+<h2>Method and sources</h2>
+<p class="small">WSBF figures: <a href="https://www.globenewswire.com/news-release/2026/11/13/3402950/0/en/waterstone-financial-inc-announces-results-of-operations-for-the-quarter-and-nine-months-ended-september-30-2026.html" target="_blank" rel="noopener">earnings release, GlobeNewswire, Nov 13, 2026, 4:01 p.m. ET</a>. Consensus: <a href="https://www.marketbeat.com/earnings/reports/2026-10-22-waterstone-financial-inc-stock/" target="_blank" rel="noopener">MarketBeat earnings preview</a> (pre-release, price data Oct 13, 2026; analyst count not given). Peers: Q3 2026 releases for <a href="https://s205.q4cdn.com/250268078/files/content_files/Bank-First-Corporation-2026Q3-earnings-release.pdf" target="_blank" rel="noopener">BFC</a>, <a href="https://finviz.com/news/412096/first-business-bank-reports-record-third-quarter-earnings" target="_blank" rel="noopener">FBIZ</a> (secondary copy) and <a href="https://s205.q4cdn.com/431073563/files/doc_news/Citizens-Community-Bancorp-Inc--Reports-Third-Quarter-2026-Earnings-of-0-56-Per-Share-Board-Approves-14-Increase-in-Quarterly-Dividen-J3YU3.pdf" target="_blank" rel="noopener">CZWI</a>. Revenue is net interest income plus noninterest income. Growth rates and ratios were recomputed from dollar amounts. All GAAP, USD. As of Nov 13, 2026. Not investment advice.</p>
+</div>
+<div id="tip" hidden></div>
+<script>
+const D={
+ "company": "Waterstone Financial, Inc.",
+ "ticker": "WSBF",
+ "exchange": "Nasdaq",
+ "type": "bank (savings bank holding company with a mortgage banking segment)",
+ "fiscal_period": "Q3 2026",
+ "calendar_dates": "2026-07-01 to 2026-09-30",
+ "release_date": "2026-11-13 16:01 ET",
+ "source_url": "https://www.globenewswire.com/news-release/2026/11/13/3402950/0/en/waterstone-financial-inc-announces-results-of-operations-for-the-quarter-and-nine-months-ended-september-30-2026.html",
+ "units": "USD thousands unless noted; all GAAP (no adjusted EPS reported)",
+ "quarters": [
+  "Q3 2025",
+  "Q4 2025",
+  "Q1 2026",
+  "Q2 2026",
+  "Q3 2026"
+ ],
+ "series": {
+  "net_income": [
+   7926,
+   7713,
+   5997,
+   8462,
+   6174
+  ],
+  "eps_diluted": [
+   0.45,
+   0.44,
+   0.34,
+   0.49,
+   0.36
+  ],
+  "nii": [
+   14739,
+   15711,
+   15463,
+   16010,
+   16416
+  ],
+  "nim_pct": [
+   2.76,
+   2.89,
+   2.97,
+   3.03,
+   3.06
+  ],
+  "nonii": [
+   22302,
+   21459,
+   20228,
+   24240,
+   19290
+  ],
+  "nonie": [
+   27466,
+   27677,
+   27875,
+   29379,
+   27662
+  ],
+  "provision": [
+   -269,
+   -558,
+   264,
+   236,
+   443
+  ],
+  "roaa_pct": [
+   1.42,
+   1.35,
+   1.1,
+   1.52,
+   1.09
+  ],
+  "npa_to_assets_pct": [
+   0.27,
+   0.29,
+   0.35,
+   0.3,
+   0.55
+  ],
+  "originations": [
+   539404,
+   534646,
+   508314,
+   621819,
+   509730
+  ],
+  "cost_ib_dep_pct": [
+   3.19,
+   3.12,
+   3.09,
+   2.98,
+   2.95
+  ],
+  "loan_yield_pct": [
+   5.84,
+   5.85,
+   5.88,
+   5.93,
+   5.93
+  ],
+  "cb_eff_pct": [
+   48.94,
+   49.23,
+   52.48,
+   48.16,
+   49.55
+  ],
+  "mb_eff_pct": [
+   93.66,
+   95.78,
+   99.99,
+   92.97,
+   104.31
+  ],
+  "revenue": [
+   37041,
+   37170,
+   35691,
+   40250,
+   35706
+  ],
+  "efficiency_pct": [
+   74.15,
+   74.46,
+   78.1,
+   72.99,
+   77.47
+  ]
+ },
+ "balance": {
+  "total_assets": [
+   2259507,
+   2253032
+  ],
+  "loans_hfi": [
+   1675552,
+   1698019
+  ],
+  "deposits": [
+   1437272,
+   1439466
+  ],
+  "equity": [
+   349392,
+   346936
+  ],
+  "bvps": [
+   19.03,
+   19.29
+  ],
+  "dates": [
+   "2025-12-31",
+   "2026-09-30"
+  ],
+  "acl_to_loans_pct_q3_26": 1.05,
+  "nonaccrual_to_loans_pct": [
+   0.35,
+   0.39,
+   0.68
+  ]
+ },
+ "dividend_ps": 0.17,
+ "consensus": {
+  "eps": {
+   "value": 0.66,
+   "provider": "MarketBeat",
+   "as_of": "preview page, price data Oct 13, 2026 (pre-release)",
+   "basis": "EPS, basis not stated",
+   "analysts": "not given; MarketBeat shows one rating",
+   "url": "https://www.marketbeat.com/earnings/reports/2026-10-22-waterstone-financial-inc-stock/",
+   "caveat": "Same $0.66 was listed for Q2 2026 (actual $0.49); MarketBeat's $65.8M revenue estimate does not match Waterstone's ~$36M quarterly revenue, so the estimate looks stale. Treat the beat/miss as low confidence."
+  },
+  "revenue": {
+   "value": null,
+   "note": "MarketBeat $65.8M not used: basis mismatch"
+  }
+ },
+ "computed": {
+  "revenue": {
+   "yoy_pct": -3.6,
+   "qoq_pct": -11.3
+  },
+  "nii": {
+   "yoy_pct": 11.4,
+   "qoq_pct": 2.5
+  },
+  "net_income": {
+   "yoy_pct": -22.1,
+   "qoq_pct": -27.0
+  },
+  "eps_diluted": {
+   "yoy_pct": -20.0,
+   "qoq_pct": -26.5
+  },
+  "nonii": {
+   "yoy_pct": -13.5
+  },
+  "originations": {
+   "yoy_pct": -5.5,
+   "qoq_pct": -18.0
+  },
+  "nim_bp_yoy": 30,
+  "nim_bp_qoq": 3,
+  "efficiency_pct": 77.47,
+  "mortgage_segment": {
+   "net_income_k": [
+    948,
+    1171,
+    -474
+   ],
+   "pretax_k": [
+    1330,
+    1596,
+    -754
+   ],
+   "periods": [
+    "Q3 2025",
+    "Q2 2026",
+    "Q3 2026"
+   ],
+   "gain_on_sale_margin_pct": [
+    3.87,
+    3.6,
+    3.48
+   ]
+  },
+  "community_segment": {
+   "net_income_k": [
+    6916,
+    7263,
+    6573
+   ],
+   "periods": [
+    "Q3 2025",
+    "Q2 2026",
+    "Q3 2026"
+   ]
+  },
+  "eps_vs_cons": {
+   "diff": -0.3,
+   "pct": -45.5
+  },
+  "net_income_bridge_k": [
+   [
+    "Q3 2025 net income",
+    7926,
+    "total"
+   ],
+   [
+    "Net interest income",
+    1677,
+    "d"
+   ],
+   [
+    "Noninterest income",
+    -3012,
+    "d"
+   ],
+   [
+    "Noninterest expense",
+    -196,
+    "d"
+   ],
+   [
+    "Provision",
+    -712,
+    "d"
+   ],
+   [
+    "Income taxes",
+    491,
+    "d"
+   ],
+   [
+    "Q3 2026 net income",
+    6174,
+    "total"
+   ]
+  ],
+  "peer_position": {
+   "rev_yoy": {
+    "co": -3.6,
+    "peer_median": 7.0,
+    "better_is": "higher",
+    "rank": "4 of 4",
+    "gap": -10.6
+   },
+   "eps_yoy": {
+    "co": -20.0,
+    "peer_median": 17.5,
+    "better_is": "higher",
+    "rank": "4 of 4",
+    "gap": -37.5
+   },
+   "nim": {
+    "co": 3.06,
+    "peer_median": 3.8,
+    "better_is": "higher",
+    "rank": "4 of 4",
+    "gap": -0.74
+   },
+   "eff": {
+    "co": 77.47,
+    "peer_median": 55.12,
+    "better_is": "lower",
+    "rank": "4 of 4",
+    "gap": 22.35
+   }
+  }
+ },
+ "peers": [
+  {
+   "ticker": "BFC",
+   "name": "Bank First Corporation",
+   "released": "2026-10-20",
+   "why": "Wisconsin bank holding company, Waterstone's largest in-state listed competitor",
+   "rev_k": [
+    44200,
+    65300
+   ],
+   "eps": [
+    1.83,
+    2.15
+   ],
+   "nim": 4.07,
+   "eff": 53.1,
+   "note": "2025-26 acquisition lifts growth; efficiency computed from release",
+   "url": "https://s205.q4cdn.com/250268078/files/content_files/Bank-First-Corporation-2026Q3-earnings-release.pdf",
+   "rev_yoy": 47.7,
+   "eps_yoy": 17.5,
+   "period": "Q3 2026 (Jul 1-Sep 30, 2026)"
+  },
+  {
+   "ticker": "FBIZ",
+   "name": "First Business Financial Services",
+   "released": "2026-10-29",
+   "why": "Madison-based Wisconsin commercial bank of similar asset size",
+   "rev_k": [
+    44490,
+    47480
+   ],
+   "eps": [
+    1.7,
+    1.95
+   ],
+   "nim": 3.8,
+   "eff": 55.12,
+   "note": "Q3 2025 noninterest income implied from release",
+   "url": "https://finviz.com/news/412096/first-business-bank-reports-record-third-quarter-earnings",
+   "rev_yoy": 6.7,
+   "eps_yoy": 14.7,
+   "period": "Q3 2026 (Jul 1-Sep 30, 2026)"
+  },
+  {
+   "ticker": "CZWI",
+   "name": "Citizens Community Bancorp",
+   "released": "2026-10-26",
+   "why": "Eau Claire, Wisconsin community bank and former thrift, like Waterstone",
+   "rev_k": [
+    16236,
+    17373
+   ],
+   "eps": [
+    0.37,
+    0.56
+   ],
+   "nim": 3.37,
+   "eff": 61.0,
+   "url": "https://s205.q4cdn.com/431073563/files/doc_news/Citizens-Community-Bancorp-Inc--Reports-Third-Quarter-2026-Earnings-of-0-56-Per-Share-Board-Approves-14-Increase-in-Quarterly-Dividen-J3YU3.pdf",
+   "rev_yoy": 7.0,
+   "eps_yoy": 51.4,
+   "period": "Q3 2026 (Jul 1-Sep 30, 2026)"
+  }
+ ],
+ "thesis": "The bank's margin rose a fifth straight quarter, but a mortgage loss cut EPS 20% and left Waterstone last of four Wisconsin peers",
+ "lede": "Waterstone earned $6.2 million, or $0.36 a share, down from $0.45 a year ago. Community banking net interest income hit a record as the margin widened to 3.06%, but the mortgage arm swung to a $0.5 million loss as rates jumped and gain-on-sale margins thinned. The open question is credit: nonperforming assets doubled to 0.55% of assets on one relationship.",
+ "takeaways": [
+  "Diluted EPS of $0.36 fell 20% YoY and is well below MarketBeat's $0.66 listing, a single-source estimate that looks stale.",
+  "Net interest margin rose 30 bp YoY to 3.06%, but it is the lowest of four Wisconsin banks (median 3.80%).",
+  "Mortgage banking lost $0.5M vs +$0.9M a year ago; originations fell 5.5% to $510M and sale margin slipped to 3.48%.",
+  "Revenue fell 3.6% YoY while every peer grew (median +7.0%); WSBF ranks 4 of 4 on growth, NIM and efficiency.",
+  "Nonperforming assets rose to 0.55% of assets from 0.27%, tied mainly to one previously substandard relationship."
+ ],
+ "script_seed": [
+  {
+   "state": "tier-0",
+   "text": "Waterstone Financial's third quarter: a stronger bank, a weaker mortgage business."
+  },
+  {
+   "state": "tier-1",
+   "text": "Diluted earnings were thirty-six cents a share, down twenty percent from a year ago."
+  },
+  {
+   "state": "tier-2",
+   "text": "Net interest margin rose thirty basis points to three point oh six percent, still the lowest of four Wisconsin banks."
+  },
+  {
+   "state": "tier-3",
+   "text": "The mortgage segment lost about half a million dollars as rates jumped."
+  },
+  {
+   "state": "tier-4",
+   "text": "Nonperforming assets doubled to point five five percent of assets, mostly one loan relationship."
+  }
+ ]
+};
+const CFG={"kpis": [["Diluted EPS", "$0.36", "\u221220% YoY \u00b7 vs $0.66 MarketBeat", "dn"], ["Net interest margin", "3.06%", "+30 bp YoY", "up"], ["Net interest income", "$16.4M", "+11.4% YoY", "up"], ["Mortgage segment", "\u2212$0.47M", "net loss \u00b7 was +$0.95M", "dn"], ["Efficiency (consolidated)", "77.5%", "+3.3 pts YoY (worse)", "dn"], ["NPAs to assets", "0.55%", "from 0.27% a year ago", "wn"]], "bullet": [["Diluted EPS", 0.36, 0.66, 0.75, "MarketBeat"]], "trends": [["Margin widened five quarters running", "nim_pct", "%"], ["Net interest income near a record", "nii", "$k"], ["Mortgage-driven fee income fell to a five-quarter low", "nonii", "$k"], ["Nonperforming assets jumped in Q3", "npa_to_assets_pct", "%"]], "peerMeta": {"rev_yoy": ["Revenue growth YoY, %", "the only decline of four", "rev_yoy"], "eps_yoy": ["Diluted EPS growth YoY, %", "the only decline of four", "eps_yoy"], "nim": ["Net interest margin, %", "lowest of four", "nim"], "eff": ["Efficiency ratio, % (lower is better)", "highest of four", "eff"]}, "table": {"head": ["Bank", "Period", "Rev. YoY", "EPS YoY", "NIM", "Efficiency", "Released"], "rows": [["WSBF", "Q3 2026", "-3.6%", "-20.0%", "3.06%", "77.47%", "Nov 13"], ["BFC", "Q3 2026", "+47.7%", "+17.5%", "4.07%", "53.1%", "Oct 20"], ["FBIZ", "Q3 2026", "+6.7%", "+14.7%", "3.80%", "55.1%", "Oct 29"], ["CZWI", "Q3 2026", "+7.0%", "+51.4%", "3.37%", "61.0%", "Oct 26"]]}, "risks": ["<strong>Mortgage earnings are rate-sensitive.</strong> The segment's pretax result swung from +$1.33M a year ago to \u2212$0.75M; its efficiency ratio was 104.3%, meaning costs exceeded revenue.", "<strong>Credit.</strong> Nonaccrual loans rose to 0.68% of loans from 0.39% in Q2, and past-due loans to 0.81%, tied mainly to one previously substandard relationship. The release gives no net charge-off figure.", "<strong>Book value pressure.</strong> Accumulated other comprehensive loss widened to $21.8M from $12.3M at year end as Treasury rates rose.", "<strong>Revenue mix.</strong> Noninterest income, mostly mortgage gains, was 54% of revenue and fell 13.5% YoY."]};
+
+const S=D.series,M=D.computed,Q=D.quarters.map(q=>q.replace(" 20","'"));
+document.getElementById("thesis").textContent=D.thesis+".";
+document.getElementById("lede").textContent=D.lede;
+const fm=(v,u)=>u==="$k"?"$"+(v/1000).toFixed(1)+"M":u==="$b"?"$"+(v/1e6).toFixed(2)+"B":u==="%"?v.toFixed(2)+"%":u==="$"?"$"+v.toFixed(2):v;
+document.getElementById("kpis").innerHTML=CFG.kpis.map(k=>`<div class="kpi"><div class="l">${k[0]}</div><div class="v">${k[1]}</div><div class="c ${k[3]}">${k[2]}</div></div>`).join("");
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const tip=document.getElementById("tip");
+function hov(el,txt){el.addEventListener("pointerenter",e=>{tip.textContent=txt;tip.hidden=false});el.addEventListener("pointermove",e=>{tip.style.left=Math.min(e.clientX+12,innerWidth-180)+"px";tip.style.top=(e.clientY+12)+"px"});el.addEventListener("pointerleave",()=>tip.hidden=true)}
+const NS="http://www.w3.org/2000/svg";
+function svg(host,w,h){host.innerHTML="";const s=document.createElementNS(NS,"svg");s.setAttribute("viewBox",`0 0 ${w} ${h}`);host.appendChild(s);return s}
+function el(p,t,a,txt){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;p.appendChild(e);return e}
+function W(host){return Math.max(260,host.clientWidth)}
+function bullet(){const h=document.getElementById("c-bullet");if(!h)return;const w=W(h),rows=CFG.bullet,s=svg(h,w,20+rows.length*68);
+ rows.forEach((r,i)=>{const y=20+i*68,x0=0,x1=w-90,sc=v=>x0+v/r[3]*(x1-x0),f=v=>"$"+v.toFixed(2);
+  el(s,"text",{x:0,y:y,"font-size":13,class:"mut"},r[0]);
+  el(s,"rect",{x:x0,y:y+8,width:x1-x0,height:24,fill:css("--rule")});
+  const b=el(s,"rect",{x:x0,y:y+14,width:sc(r[1])-x0,height:12,fill:css("--accent")});hov(b,`${r[0]} actual ${f(r[1])}`);
+  const t=el(s,"line",{x1:sc(r[2]),x2:sc(r[2]),y1:y+4,y2:y+36,stroke:css("--fg"),"stroke-width":2.5});hov(t,`${r[4]} ${f(r[2])}`);
+  el(s,"text",{x:sc(r[1])+6,y:y+25,"font-size":13,"font-weight":600},f(r[1]));
+  el(s,"text",{x:sc(r[2]),y:y+52,"font-size":12,class:"mut","text-anchor":"middle"},r[4]+" "+f(r[2]));});}
+function trends(){const g=document.getElementById("c-trends");g.innerHTML="";
+ CFG.trends.forEach(p=>{const c=document.createElement("div");c.className="chart";c.innerHTML=`<p class="t">${p[0]}</p><div></div>`;g.appendChild(c);
+  const h=c.lastChild,w=W(h),H=150,s=svg(h,w,H),v=S[p[1]],mn=Math.min(...v),mx=Math.max(...v),pad=(mx-mn)*.25||1,lo=mn-pad,hi=mx+pad;
+  const X=i=>18+i*(w-56)/4,Y=x=>H-28-(x-lo)/(hi-lo)*(H-56);
+  el(s,"line",{x1:0,x2:w,y1:H-22,y2:H-22,stroke:css("--rule")});
+  el(s,"polyline",{points:v.map((x,i)=>X(i)+","+Y(x)).join(" "),fill:"none",stroke:css("--accent"),"stroke-width":2.5});
+  v.forEach((x,i)=>{const r=el(s,"circle",{cx:X(i),cy:Y(x),r:i==4?5:3.5,fill:css("--accent")});hov(r,`${Q[i]}: ${fm(x,p[2])}`);
+   el(s,"text",{x:X(i),y:H-6,"font-size":11,class:"mut","text-anchor":"middle"},Q[i]);
+   if(i==0||i==4)el(s,"text",{x:X(i),y:Y(x)-10,"font-size":12,"font-weight":i==4?700:400,"text-anchor":i==0?"start":"end"},fm(x,p[2]));});});}
+function peers(){const g=document.getElementById("c-peers");g.innerHTML="";const PP=M.peer_position;
+ const order=Object.keys(PP).sort((a,b)=>Math.abs(PP[b].gap/(PP[b].peer_median||1))-Math.abs(PP[a].gap/(PP[a].peer_median||1)));
+ order.forEach(k=>{const m=CFG.peerMeta[k];const c=document.createElement("div");c.className="chart";c.innerHTML=`<p class="t">${m[0]}: ${D.ticker} ${m[1]}</p><div></div>`;g.appendChild(c);
+  const h=c.lastChild,w=W(h),H=84,s=svg(h,w,H);const pts=[[D.ticker,PP[k].co,1]].concat(D.peers.filter(p=>p[m[2]]!=null).map(p=>[p.ticker,p[m[2]],0]));
+  const vs=pts.map(p=>p[1]).concat(PP[k].peer_median),mn=Math.min(...vs),mx=Math.max(...vs),r=(mx-mn)||1,lo=mn-r*.1,hi=mx+r*.1,X=v=>24+(v-lo)/(hi-lo)*(w-48);
+  el(s,"line",{x1:8,x2:w-8,y1:46,y2:46,stroke:css("--rule")});
+  el(s,"line",{x1:X(PP[k].peer_median),x2:X(PP[k].peer_median),y1:30,y2:62,stroke:css("--muted"),"stroke-width":1});
+  el(s,"text",{x:X(PP[k].peer_median),y:78,"font-size":11,class:"mut","text-anchor":"middle"},"median "+PP[k].peer_median);
+  const sorted=pts.slice().sort((a,b)=>a[1]-b[1]);let last=-99,flip=0;
+  sorted.forEach(p=>{const x=X(p[1]);const d=el(s,"circle",{cx:x,cy:46,r:p[2]?7:5.5,fill:p[2]?css("--accent"):css("--peer")});hov(d,`${p[0]}: ${p[1]}`);
+   flip=(x-last<44)?1-flip:0;last=x;el(s,"text",{x:x,y:flip?20:32,"font-size":11.5,"font-weight":p[2]?700:400,"text-anchor":"middle",fill:p[2]?css("--accent"):css("--fg")},p[0]);});});
+ const t=document.getElementById("t-peers");t.innerHTML="<tr>"+CFG.table.head.map(x=>`<th>${x}</th>`).join("")+"</tr>"+CFG.table.rows.map(r=>`<tr class="${r[0]==D.ticker?"me":""}">${r.map(x=>`<td>${x}</td>`).join("")}</tr>`).join("");
+ document.getElementById("why").innerHTML=D.peers.map(p=>`<li><strong>${p.ticker}</strong> (${p.name}): ${p.why}.${p.note?" Note: "+p.note+".":""}</li>`).join("");}
+function bridge(){const h=document.getElementById("c-bridge"),w=W(h),B=M.net_income_bridge_k,rowH=30,H=B.length*rowH+10,s=svg(h,w,H),lab=Math.min(170,w*.44),x0=lab+6,x1=w-64;let run=0,lo=0,hi=0;
+ B.forEach(b=>{if(b[2]=="total"){run=b[1]}else{run+=b[1]}lo=Math.min(lo,run);hi=Math.max(hi,run)});const X=v=>x0+(v-lo)/(hi*1.05-lo)*(x1-x0);run=0;
+ B.forEach((b,i)=>{const y=i*rowH+4;el(s,"text",{x:0,y:y+16,"font-size":12},b[0]);let a,z,col;
+  if(b[2]=="total"){a=0;z=b[1];run=b[1];col=css("--accent")}else{a=run;z=run+b[1];run=z;col=b[1]>0?css("--good"):css("--bad")}
+  const r=el(s,"rect",{x:X(Math.min(a,z)),y:y+4,width:Math.max(1,Math.abs(X(z)-X(a))),height:rowH-12,fill:col});hov(r,`${b[0]}: ${b[1]>0&&b[2]!="total"?"+":""}$${(b[1]/1000).toFixed(2)}M`);
+  el(s,"text",{x:X(Math.max(a,z))+5,y:y+16,"font-size":12,"font-weight":600},(b[2]!="total"?(b[1]>0?"+":"−"):"")+"$"+(Math.abs(b[1])/1000).toFixed(2)+"M");});}
+document.getElementById("risks").innerHTML=CFG.risks.map(x=>"<li>"+x+"</li>").join("");
+function draw(){bullet();trends();peers();bridge()}
+draw();let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(draw,120)});
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",draw);
+document.getElementById("theme").addEventListener("click",()=>{const r=document.documentElement,cur=r.dataset.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");r.dataset.theme=cur=="dark"?"light":"dark";draw()});
+
+</script>
+</body></html>

@@ -25,5 +25,23 @@
     "released": "2026-11-12",
     "headline": "Record quarter beat the Street, and OPHC led every Florida peer on growth, margin and efficiency",
     "added": "2026-11-13"
+  },
+  {
+    "slug": "wsbf-q3-2026",
+    "bank": "Waterstone Financial",
+    "ticker": "WSBF",
+    "quarter": "Q3 2026",
+    "released": "2026-11-13",
+    "headline": "The margin rose a fifth straight quarter, but a mortgage loss cut EPS 20% and left Waterstone last of four Wisconsin peers",
+    "added": "2026-11-14"
+  },
+  {
+    "slug": "byfc-q3-2026",
+    "bank": "Broadway Financial",
+    "ticker": "BYFC",
+    "quarter": "Q3 2026",
+    "released": "2026-11-13",
+    "headline": "Deposits grew 31% in a year, but Broadway had the thinnest margin and second-highest cost ratio among similar-size peers",
+    "added": "2026-11-14"
   }
 ]
