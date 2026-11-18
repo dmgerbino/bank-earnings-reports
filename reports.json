@@ -52,5 +52,23 @@
     "released": "2026-11-17",
     "headline": "Calvin B. Taylor was the most profitable of four Maryland banks, but grew profit the least as costs rose 12.6% and problem loans climbed",
     "added": "2026-11-17"
+  },
+  {
+    "slug": "lrbi-q3-2026",
+    "bank": "Lake Ridge Bancorp",
+    "ticker": "LRBI",
+    "quarter": "Q3 2026",
+    "released": "2026-11-17",
+    "headline": "Lake Ridge grew earnings 26% as revenue outran costs, but it still spends more per dollar than its Wisconsin peers",
+    "added": "2026-11-18"
+  },
+  {
+    "slug": "emyb-q3-2026",
+    "bank": "Embassy Bancorp",
+    "ticker": "EMYB",
+    "quarter": "Q3 2026",
+    "released": "2026-11-17",
+    "headline": "Embassy grew profit fastest of three Pennsylvania banks, but its margin is still the thinnest",
+    "added": "2026-11-18"
   }
 ]
