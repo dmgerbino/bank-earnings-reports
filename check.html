@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Phone width check</title>
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--muted:#666;--rule:#ddd;--good:#0a7a3d;--bad:#c0392b;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#000;--fg:#F0EDEA;--muted:#A19D97;--rule:#262626;--good:#3DD68C;--bad:#FF6B52;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;padding:16px;background:var(--bg);color:var(--fg);font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+h1{font-size:18px;margin:0 0 4px}
+p{margin:4px 0}
+.muted{color:var(--muted)}
+#overall{font-size:16px;font-weight:600;margin:12px 0}
+.pass{color:var(--good)}.fail{color:var(--bad)}
+.frames{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;margin-top:12px}
+.col{width:382px}
+.col h2{font-size:14px;margin:0 0 4px}
+.col ul{margin:4px 0 8px;padding-left:18px;font-size:12px;word-break:break-word}
+iframe{width:382px;height:800px;border:1px solid var(--rule);display:block;background:#fff}
+a{color:inherit}
+</style>
+</head>
+<body>
+<h1>Phone width check (380px, light and dark)</h1>
+<p class="muted">Loads a published bank page in two 380px-wide frames, one per theme, and checks for sideways scroll, anything past the right edge, and chart text outside its SVG. Open with <code>check.html?slug=&lt;slug&gt;</code>.</p>
+<div id="pick"></div>
+<p id="overall" data-status="pending">Checking…</p>
+<div class="frames" id="frames"></div>
+<script>
+(function(){
+const W = 380;
+const slug = new URLSearchParams(location.search).get("slug");
+const overall = document.getElementById("overall");
+const pick = document.getElementById("pick");
+
+fetch("reports.json", {cache:"no-store"}).then(r => r.json()).then(rows => {
+  const list = (Array.isArray(rows) ? rows : (rows.reports || []));
+  pick.innerHTML = "<p class='muted'>Banks: " + list.map(r =>
+    `<a href="?slug=${encodeURIComponent(r.slug)}">${r.slug}</a>`).join(" · ") + "</p>";
+}).catch(() => {});
+
+if (!slug || !/^[a-z0-9-]+$/.test(slug)) {
+  overall.textContent = "Add ?slug=<slug> to the address, or pick a bank above.";
+  overall.dataset.status = "none";
+  return;
+}
+
+let savedTheme = null;
+try { savedTheme = localStorage.getItem("theme"); } catch (e) {}
+
+function describe(el) {
+  let s = el.tagName.toLowerCase();
+  if (el.id) s += "#" + el.id;
+  if (el.classList && el.classList.length) s += "." + [...el.classList].slice(0, 2).join(".");
+  const t = (el.textContent || "").trim().replace(/\s+/g, " ").slice(0, 40);
+  return t ? `${s} "${t}"` : s;
+}
+
+function clippedByAncestor(el, win) {
+  for (let p = el.parentElement; p && p !== el.ownerDocument.body; p = p.parentElement) {
+    const ox = win.getComputedStyle(p).overflowX;
+    if (ox === "auto" || ox === "scroll" || ox === "hidden" || ox === "clip") return true;
+  }
+  return false;
+}
+
+function inspect(win) {
+  const doc = win.document, root = doc.documentElement;
+  const problems = [];
+  const sw = Math.max(root.scrollWidth, doc.body ? doc.body.scrollWidth : 0);
+  if (sw > root.clientWidth + 1) problems.push(`Page scrolls sideways: ${sw}px wide in a ${root.clientWidth}px screen`);
+
+  const past = [], flagged = [];
+  for (const el of doc.body.querySelectorAll("*")) {
+    if (el.closest("svg") && el.tagName.toLowerCase() !== "svg") continue;
+    if (flagged.some(f => f.contains(el))) continue;  // report only the outermost offender
+    const cs = win.getComputedStyle(el);
+    if (cs.visibility === "hidden" || cs.display === "none") continue;
+    const r = el.getBoundingClientRect();
+    if (!r.width || !r.height) continue;
+    const offLeft = r.left < -1 && cs.position !== "absolute" && cs.position !== "fixed";
+    if (r.right > root.clientWidth + 1 || offLeft) {
+      if (clippedByAncestor(el, win)) continue;
+      flagged.push(el);
+      past.push(`${describe(el)} reaches ${Math.round(r.left)}–${Math.round(r.right)}px`);
+    }
+  }
+  past.slice(0, 8).forEach(p => problems.push("Past the edge: " + p));
+  if (past.length > 8) problems.push(`…and ${past.length - 8} more past the edge`);
+
+  const svgText = [];
+  for (const svg of doc.querySelectorAll("svg")) {
+    const vb = svg.viewBox && svg.viewBox.baseVal;
+    let x0 = 0, y0 = 0, w, h;
+    if (vb && vb.width) { x0 = vb.x; y0 = vb.y; w = vb.width; h = vb.height; }
+    else { const b = svg.getBoundingClientRect(); w = b.width; h = b.height; }
+    if (!w || !h) continue;
+    for (const t of svg.querySelectorAll("text")) {
+      let b; try { b = t.getBBox(); } catch (e) { continue; }
+      if (!b.width) continue;
+      if (b.x < x0 - 1 || b.y < y0 - 1 || b.x + b.width > x0 + w + 1 || b.y + b.height > y0 + h + 1)
+        svgText.push(`"${(t.textContent || "").trim().slice(0, 30)}"`);
+    }
+  }
+  svgText.slice(0, 8).forEach(s => problems.push("Chart text outside its SVG: " + s));
+  if (svgText.length > 8) problems.push(`…and ${svgText.length - 8} more chart labels outside`);
+  return problems;
+}
+
+function setTheme(win, want) {
+  const root = win.document.documentElement;
+  const current = () => root.dataset.theme ||
+    (win.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  const btn = win.document.getElementById("theme") || win.document.getElementById("themeBtn");
+  // Use the page's own toggle so its charts redraw in the new colours.
+  for (let i = 0; i < 2 && btn && current() !== want; i++) btn.click();
+  if (current() !== want) {
+    root.dataset.theme = want;
+    ["draw", "drawAll"].forEach(f => { if (typeof win[f] === "function") try { win[f](); } catch (e) {} });
+    win.dispatchEvent(new win.Event("resize"));
+  }
+  return current();
+}
+
+const themes = ["light", "dark"];
+const results = {};
+const frames = document.getElementById("frames");
+
+function finish() {
+  if (Object.keys(results).length < themes.length) return;
+  try { savedTheme === null ? localStorage.removeItem("theme") : localStorage.setItem("theme", savedTheme); } catch (e) {}
+  const bad = themes.filter(t => results[t].length);
+  if (bad.length) {
+    overall.textContent = `FAIL at 380px in ${bad.join(" and ")}: see the list under each frame.`;
+    overall.className = "fail"; overall.dataset.status = "fail";
+  } else {
+    overall.textContent = "PASS at 380px in light and dark: no sideways scroll, nothing past the edge, no chart text outside its SVG.";
+    overall.className = "pass"; overall.dataset.status = "pass";
+  }
+}
+
+// Load one frame at a time so the page's saved theme can't leak between them.
+function run(i) {
+  if (i >= themes.length) return;
+  const theme = themes[i];
+  const col = document.createElement("div");
+  col.className = "col";
+  col.innerHTML = `<h2>${theme}</h2><p class="muted" data-theme-status="${theme}">Loading…</p><ul></ul>`;
+  const f = document.createElement("iframe");
+  f.title = `${slug} at 380px, ${theme}`;
+  col.appendChild(f);
+  frames.appendChild(col);
+  const status = col.querySelector("p"), ul = col.querySelector("ul");
+  f.addEventListener("load", () => {
+    const win = f.contentWindow;
+    let got;
+    try { got = setTheme(win, theme); } catch (e) {
+      status.textContent = "Could not read the page: " + e.message;
+      results[theme] = ["Could not read the page"]; finish(); return;
+    }
+    setTimeout(() => {
+      const probs = inspect(win);
+      results[theme] = probs;
+      if (got !== theme) probs.unshift(`Theme stayed ${got}; check this frame by eye`);
+      status.textContent = probs.length ? `${probs.length} problem(s)` : "OK";
+      status.className = probs.length ? "fail" : "pass";
+      status.dataset.result = probs.length ? "fail" : "pass";
+      ul.innerHTML = probs.map(p => `<li>${p.replace(/</g, "&lt;")}</li>`).join("");
+      // Show the whole page so a full-page screenshot covers it.
+      f.style.height = Math.min(win.document.documentElement.scrollHeight + 4, 30000) + "px";
+      finish();
+      run(i + 1);
+    }, 1200);
+  });
+  f.src = `${slug}/index.html?check=${Date.now()}`;
+}
+run(0);
+})();
+</script>
+</body>
+</html>

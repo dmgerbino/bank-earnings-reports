@@ -2,7 +2,9 @@
 
 Each `<TICKER>.csv` holds daily closes (`date,close`) for the 90 calendar days ending on that bank's release date. `scripts/og.py` draws the card's price line from it and computes the % change from the first to the last close in the window.
 
-Close is the split-adjusted daily close as shown on Yahoo Finance's historical prices page (not dividend-adjusted). Stooq, Yahoo's chart API and Nasdaq's historical page were also tried but refused or rate-limited automated reads, so each series has one source.
+New series come from Google Finance's six-month chart, read one trading day at a time in the browser with no sign-in, as the README's `--prices` rule says; days with no trade carry the last traded close forward. Yahoo Finance now refuses this browser.
+
+The first five series (PNC to BYFC) are the split-adjusted daily close as shown on Yahoo Finance's historical prices page (not dividend-adjusted). Stooq, Yahoo's chart API and Nasdaq's historical page were also tried but refused or rate-limited automated reads, so each series has one source.
 
 | File | Window | Read from | Read on |
 |---|---|---|---|
